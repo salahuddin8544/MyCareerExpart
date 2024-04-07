@@ -1,0 +1,28 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "==4.2"
+django-allauth = "*"
+django-extensions = "*"
+django-environ = "*"
+djangorestframework = "*"
+drf-yasg = "*"
+psycopg2-binary = "*"
+pillow = "*"
+django-storages = "*"
+gunicorn = "*"
+factory-boy = "*"
+tqdm = "*"
+whitenoise = "*"
+django-cors-headers = "*"
+djangorestframework-simplejwt = "*"
+stripe = "*"
+django-editorjs-fields = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"

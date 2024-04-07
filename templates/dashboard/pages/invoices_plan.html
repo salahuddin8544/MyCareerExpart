@@ -1,0 +1,132 @@
+{% extends 'dashboard/dashboard.html' %}
+{% load static %}
+
+{% block additional_stylesheets %}
+    {{ block.super }}
+    <!-- Custom CSS of this page -->
+    <link rel="stylesheet" href="{% static 'css/dashboard/invoices_plan.css' %}">
+
+
+{% endblock additional_stylesheets %}
+    
+{% block dashboard_content %}
+
+<div class="invoice">
+    <!-- top of Header of Invoice Page -->
+    <div class="invoice_top">
+        <div class="invo_right">
+            Invoices
+        </div>
+        <div class="invo_left">
+            <!-- searchbox -->
+            <div class="invo_search">
+                <div class="search_box">
+                    <input class="box_find" type="text" placeholder="Search">
+                </div>
+                <div class="search_icon">
+                    <img src="{% static 'images/dashboard-photo/invoice/search 1 (1).svg' %}" alt="">
+                </div>
+            </div>
+            <!-- filter -->
+            <div class="filter_invo">
+                <img src="{% static 'images/dashboard-photo/invoice/filter (1) 1 (1).svg' %}" alt="">
+                <span class="filter ms-2">Filters</span>
+            </div>
+        </div>
+    </div> <hr>
+
+    
+    <div class="invoice_table">
+        <div class="mt-4">
+            <div class="row">
+                <div class="col-md-12 summary-tile-text_sum_3 attribute-table" id="tableDesign">
+                    <div class="table-scroll">
+                        <table class="table reponsive-plan-table">
+                            <!-- Table headers -->
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="selectAllCheckbox"></th>
+                                    <th>Invoice#</th>
+                                    <th>Date</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Type</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <!-- Table body -->
+                            <tbody>
+                                <td>{{ datetime_obj_with_tz }}lkfjasldfj</td>
+                                <!-- 2nd Row -->
+                                {% for stripe_invoice in stripe_invoices %}
+                                <tr>
+                                    <form method="post" action="">
+                                        {% csrf_token %}
+                                        <td><input type="checkbox" class="singleCheckbox"></td>
+                                        <td>{{ stripe_invoice.checkout_response.invoice }}</td>
+                                        <td>{{ stripe_invoice.checkout_response.created }}</td>
+                                        <td>{{ stripe_invoice.checkout_response.amount_total|floatformat:"2" }} USD</td>
+                                        {% if stripe_invoice.checkout_response.payment_status == 'paid' %}
+                                            <td class="status">{{stripe_invoice.checkout_response.payment_status}}</td>
+                                        {% else %}
+                                            <td class="status_draft">{{invoice.checkout_response.payment_status}}</td>
+                                        {% endif %}
+                                        <td>{{ stripe_invoice.checkout_response.payment_method_types.0 }}</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <div class="dropdown-toggle button_action action-button">
+                                                    <div class="dot_action"></div>
+                                                    <div class="dot_action"></div>
+                                                    <div class="dot_action"></div>
+                                                </div>
+                                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item action-edit" href="#">Edit</a>
+                                                    <button type="submit" class="dropdown-item action-delete">Delete</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </form>
+
+                                    <!-- Access other subscription attributes similarly -->
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  
+{% endblock dashboard_content %}
+
+{% block extra_js %}
+<script>
+    $(document).ready(function(){
+        // Select all checkboxes when selectAllCheckbox is checked
+        $("#selectAllCheckbox").change(function(){
+            $(".singleCheckbox").prop('checked', $(this).prop("checked"));
+        });
+    });
+
+
+
+
+    // Toggle dropdown menu when clicking action button
+    $(".action-button").click(function(){
+        $(this).siblings(".dropdown-menu").toggle();
+    });
+
+    // Hide dropdown menu when clicking outside
+    $(document).click(function(e) {
+        if (!$(e.target).closest('.dropdown').length) {
+            $(".dropdown-menu").hide();
+        }
+    });
+</script>
+
+  
+{% endblock extra_js %}
+    

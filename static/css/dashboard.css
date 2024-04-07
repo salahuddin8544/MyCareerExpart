@@ -1,0 +1,266 @@
+.profile{
+    margin: 0px 0px 0px 0px;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #EEF4F8;
+    
+}
+.side-bar{
+    background:#015696;
+    list-style: none;  
+    height: auto;
+    margin-left: -12px;
+    margin-right: -12px;
+    margin-bottom: 0px;
+}
+.side-bar li a{
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-decoration: none;
+    color: white;
+    padding-left: 18px;
+}
+ul.side-bar li:hover a{
+    
+    background: #1067A8
+}
+.side-bar-item{
+    padding-left: 9px;
+}
+
+
+
+
+/* Profile Content */
+.basboard-content{
+    background-color: #EEF4F8;
+    
+    
+}
+.content-box{
+    margin: 22px 18px 22px 22px !important;
+   
+}
+.top-header-dashoard{
+    padding-bottom: 40px;
+    background-color: white;
+    padding: 50px 18px 0 50px ;
+} 
+.information-title{
+    font-size: 20px;
+    font-weight: 600;
+}
+.second-row{
+   background-color: white;
+   padding: 50px 30px 40px 50px ;
+}
+.top-header-dashoard .header-left-dashboard{
+    display: flex;
+    justify-content: left;
+    align-items: center;    
+}
+.top-header-dashoard .header-left-dashboard .profile-name .person-name{
+    font-family: Montserrat;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 34.13px;
+    text-align: left;
+   
+}
+.top-header-dashoard .header-left-dashboard .profile-img{
+    width: 81px;
+    height: 81px;
+}
+.top-header-dashoard .header-left-dashboard .profile-name{
+    padding-left: 15px;   
+}
+
+.view-profile-btn{
+    width: 211px;
+    height: 52px;
+    border: 2px solid #015696;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.view-profile-btn,
+.edit-profile-btn{
+    text-decoration: none;
+}
+
+.views-text{
+    color: #015696;
+}
+.edit-profile-btn{
+    margin-left: 25px;
+    height: 52px;
+    width: 174px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: #015696;
+    color: white;
+}
+
+.header-right-dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.information{
+    padding-top: 0px;
+}
+.attachment{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+table tr{
+    line-height: 35px;
+}
+th{
+    padding-left: 100px;
+    font-size: 16px;
+    font-weight: 600;
+}
+th a{
+    text-decoration: none;
+    color: #015696;
+}
+
+th.plus-icon, .plus-icon{
+    color: #015696;
+    text-decoration: none;
+}
+
+.formate-item{
+    padding: 20px 30px;
+}
+
+.cv{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.cv .cv-section{
+    margin-left: 15px;
+}
+
+.cv .cv-section .cv-name{
+    font-weight: 500;
+}
+
+
+/* Media query for responsiveness */
+@media screen and (max-width: 1330px) {
+
+    th{
+        padding-left: 60px;
+
+    }
+
+  }
+@media screen and (max-width: 1200px) {
+
+    .side-bar .side-bar-item{
+        display: none;
+        margin-left: 0;
+    }
+    th{
+        padding-left: 100px;
+    }
+    .attachment{
+        margin-top: 50px;
+    }
+
+  }
+
+@media screen and (max-width: 1000px) {
+    .content-box{
+        margin: 22px 0px 22px 22px !important;
+       
+    }
+   
+  }
+
+@media screen and (max-width: 992px) {
+
+    .header-right-dashboard {
+        padding-top: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+    .top-header-dashoard{
+        padding: 20px 18px 0 20px ;
+    }
+    .second-row{
+        padding: 20px 18px 40px 20px ;
+    }
+    .side-bar li a{
+        padding-left: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+  }
+
+
+@media screen and (max-width: 576px) {
+
+    th{
+        padding-left: 40px;
+        font-size: 15px;
+    }
+    tr{
+        font-size: 15px;
+    }
+    .top-header-dashoard{
+        padding: 10px 9px 0 10px ;
+    }
+    .second-row{
+        padding: 10px 9px 20px 10px ;
+    }
+    .information-title{
+        font-size: 17px;
+    }
+    .myinformation{
+        padding-top: 35px;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+    .profile-name .person-name{
+        font-size: 15px;
+    }
+    .profile-name .person-status a{
+        font-size: 12px;
+    }
+    .view-profile-btn .views-text{
+        font-size: 13px;
+    }
+    .edit-profile-btn .edit-text{
+        font-size: 13px;
+    }
+    .top-header-dashoard .header-left-dashboard .profile-img{
+        width: 70px;
+        height: 70px;
+    }
+    .view-profile-btn{
+        width: 180px;
+        height: 40px;
+
+    }
+    .edit-profile-btn{
+        margin-left: 15px;
+        height: 40px;
+        width: 150px;
+    }
+}

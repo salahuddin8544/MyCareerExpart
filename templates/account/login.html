@@ -1,0 +1,54 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load socialaccount %}
+
+{% block content %}
+    <!-- register -->
+    <section class="register-hero">
+        <div class="container py-5">
+            {% if form.errors %}
+                <div class="alert alert-info" role="alert">
+                    <strong>{{ form.non_field_errors }}</strong>
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                            <li>{{ field.label }}: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <form class="register-form" method="post" action="{% url 'account_login' %}">
+                {% csrf_token %}
+                <h2>Log in</h2>
+                <p >Enter the information you entered while login.</p>
+                <div class="my-3">
+                    <label for="email" class="font-medium">Email</label><br>
+                    <input type="email" id="email" name="login" placeholder="Enter your email address"
+                        class="form-control mt-2" />
+                </div>
+                <div class="my-3">
+                    <label for="password1" class="font-medium">Password</label><br>
+                    <input type="password" id="password1" name="password" placeholder="* * * * * * * * * *"
+                        class="form-control mt-2" />
+                </div>
+                <button type="submit">Login</button>
+
+            </form>
+            {% include 'includes/sociallogin.html' %}
+        </div>
+        <div class="thumb">
+            <div class="inner-background d-flex justify-content-center align-items-center">
+                <div class="position-relative">
+                    <img src="{% static "images/up-arrow.png" %}" class="img img-fluid up-img" alt="">
+                    <div class="my-career d-flex justify-content-center align-items-center">
+                        <h3 class="">
+                            <span class="text text-[#70A9ED]">My Career</span> Expert<br>is a consulting<br>firm that<br>specializes in<br>providing career<br> development
+                        </h3>
+                    </div>
+                    <img src="{% static "images/bottom-arrow.png" %}" class="down-img" alt="">
+                </div>
+            </div>
+          </div>
+    </section>
+{% endblock content %}

@@ -1,0 +1,105 @@
+{% extends 'dashboard/dashboard.html' %}
+
+{% load static %}
+
+{% block additional_stylesheets %}
+    {{ block.super }}
+    <!-- Custom CSS of this page -->
+    <link rel="stylesheet" href="{% static 'css/dashboard/settings.css' %}">
+
+
+{% endblock additional_stylesheets %}
+    
+{% block dashboard_content %}
+    <div class="settings">
+        <div class="setting_heaer">
+            Settings
+        </div> <hr>
+        <div class="setting_container">
+            <div class="change_title">
+                Change your login email
+            </div>
+            <div class="change_content">
+                <form method="post">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                        <div class="alert alert-info" role="alert">
+                            <strong>{{ form.non_field_errors }}</strong>
+                            <ul>
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                    <li>{{ field.label }}: {{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    <div class="top_input_box">
+                        <div class="current_item">
+                            <label class="label_title" for="old_email">Current email</label> <br>
+                            <input type="email" class="input_box" name="old_email" id="old_email" placeholder="john.smith26@gmail.com" required>
+                        </div>
+                        <div class="new_item">
+                            <label class="label_title" for="new_email">New email address</label> <br>
+                            <input type="email" class="input_box" name="new_email" id="new_email" placeholder="Enter your new email" required>
+                        </div>
+                    </div>
+                    <div class="bottom_input_box">
+                        <label class="label_title" for="password_email">Password</label> <br>
+                        <input type="password" class="input_box" name="password_email" id="password_email" placeholder="**********" required>
+                    </div>
+                    <button class="save_button" name="email_form_submit" type="submit">Save</button>
+                </form>
+                
+            </div>
+
+
+
+            <!-- 2nd Form for Change Pasword -->
+
+            <div class="change_title">
+                Change your password
+            </div>
+            <div class="change_content">
+                <form method='post'>
+                    {% csrf_token %}
+                    {% if form.errors %}
+                        <div class="alert alert-info" role="alert">
+                            <strong>{{ form.non_field_errors }}</strong>
+                            <ul>
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <li>{{ field.label }}: {{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    <div class="top_input_box">
+                        <div class="current_item">
+                            <label class="label_title" for="old_password">Current Password</label> <br>
+                            <input type="password" class="input_box" name="old_password" id="old_password" placeholder="***********" required>
+                        </div>
+                        <div class="new_item">
+                            <label class="label_title" for="new_password">New Password</label> <br>
+                            <input type="password" class="input_box" name="new_password1" id="new_password" placeholder="Enter your new password" required>
+                        </div>
+                    </div>
+                    <div class="bottom_input_box">
+                        <label class="label_title" for="confirm_password">Confirm password</label> <br>
+                        <input type="password" class="input_box" name="new_password2" id="confirm_password" placeholder="Confirm new password" required>
+                    </div>
+                    <button name="password_change_submit" class="save_button" type="submit">Save</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock dashboard_content %}
+
+{% block extra_js %}
+
+
+  
+{% endblock extra_js %}
+    

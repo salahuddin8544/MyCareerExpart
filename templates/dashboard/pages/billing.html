@@ -1,0 +1,402 @@
+{% extends 'dashboard/dashboard.html' %}
+
+{% load static %}
+
+{% block additional_stylesheets %}
+    {{ block.super }}
+    <!-- Custom CSS of this page -->
+    <link rel="stylesheet" href="{% static 'css/dashboard/billing.css' %}">
+
+
+{% endblock additional_stylesheets %}
+    
+{% block dashboard_content %}
+    <div class="billing">
+        <div class="billing_title">
+            Choose the right membership plan for you
+        </div>
+        <hr>
+        <!-- billing Table Here -->
+        <div class="billing_container">
+
+            <div class="choose-plan-card">
+                <div class="choose-plan-buttons">
+                    <button class="primary-button tab-link current tab_btn" data-tab="tab-1">Monthly</button>
+                    <button class="primary-button tab-link  tab_btn" data-tab="tab-2">Annual(25% Saave)</button>
+                </div>
+
+
+
+                <div class="card-content current tab-content" id="tab-1">
+                   <div class="card_item_content">
+                    <div class="card_item">
+                        <div class="card_img">
+                            <img src="{% static 'images/free-trial.svg' %}" alt="">
+                        </div>
+                        <div class="card_plan_img">
+                            <img src="{% static 'images/dashboard-photo/plan/Vector 55.svg' %}" alt="">
+                        </div>
+                        <div class="card_plan_text">
+                            Current Plan
+                        </div>
+                        <div class="card_title">
+                            Free Trial
+                        </div>
+                        <div class="card_price">
+                            <span class="card_money">
+                                $0.00
+                            </span>
+                            / one-week
+                        </div>
+                        <div class="card_text">
+                            Centralized your job and management and keeping track of your job.  
+                        </div>
+
+                        <div class="card_point">
+                            <div class="point_img">
+                                <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                            </div>
+                            <div class="point_text">
+                                1 job post
+                            </div>
+                        </div>
+
+                        <div class="card_point">
+                            <div class="point_img">
+                                <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                            </div>
+                            <div class="point_text">
+                                1 resume download
+                            </div>
+                        </div>
+
+
+                        <div class="card_point">
+                            <div class="point_img">
+                                <img src="{% static 'images/cros_check.svg' %}" alt="">
+                            </div>
+                            <div class="point_text">
+                                No referral and rewards
+                            </div>
+                        </div>
+
+                        <div class="card_point">
+                            <div class="point_img">
+                                <img src="{% static 'images/cros_check.svg' %}" alt="">
+                            </div>
+                            <div class="point_text">
+                                No customization and control
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="card_item">
+                        <div class="card_img">
+                            <img src="{% static 'images/free-trial.svg' %}" alt="">
+                        </div>
+                        <div class="card_title">
+                            For Students
+                        </div>
+                        <div class="card_price">
+                            <span class="card_money">
+                                $40.99
+                            </span>
+                            / per year
+                        </div>
+                        <div class="card_text">
+                            For student we offer these aspiring professionals a 50% discount on our standard rates. 
+                        </div>
+
+                        <div class="card_point">
+                            <div class="point_img">
+                                <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                            </div>
+                            <div class="point_text">
+                                20 job post
+                            </div>
+                        </div>
+
+                        <div class="card_point">
+                            <div class="point_img">
+                                <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                            </div>
+                            <div class="point_text">
+                                20 resume download
+                            </div>
+                        </div>
+                        <div class="card_point">
+                            <div class="point_img">
+                                <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                            </div>
+                            <div class="point_text">
+                                Free trial and referral rewards
+                            </div>
+                        </div>  
+                        <div class="card_point">
+                            <div class="point_img">
+                                <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                            </div>
+                            <div class="point_text">
+                                Customization and control
+                            </div>
+                        </div>  
+                        {% if request.user.is_authenticated %}
+                            <a href="https://buy.stripe.com/test_6oEe7p7clQ7m0006?client_reference_id={{request.user.usersecret}}" class="primary-button d-block text-center plan-button">Get Started</a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}" class="primary-button d-block text-center plan-button">Get Started</a>
+                        {% endif %}                                        
+                    </div>
+                    <div class="card_item">
+                        <div class="card_img">
+                            <img src="{% static 'images/free-trial.svg' %}" alt="">
+                        </div>
+                        <div class="card_title">
+                            For Professionals
+                        </div>
+                        <div class="card_price">
+                            <span class="card_money">
+                                $90.99
+                            </span>
+                            / per year
+                        </div>
+                        <div class="card_text">
+                            our service is available for centralized your job and management and keeping track of your job.
+                        </div>
+
+                        <div class="card_point">
+                            <div class="point_img">
+                                <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                            </div>
+                            <div class="point_text">
+                                50 job post
+                            </div>
+                        </div>
+
+                        <div class="card_point">
+                            <div class="point_img">
+                                <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                            </div>
+                            <div class="point_text">
+                                40 resume download
+                            </div>
+                        </div>
+                        <div class="card_point">
+                            <div class="point_img">
+                                <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                            </div>
+                            <div class="point_text">
+                                Free trial and referral rewards
+                            </div>
+                        </div>  
+                        <div class="card_point">
+                            <div class="point_img">
+                                <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                            </div>
+                            <div class="point_text">
+                                Customization and control
+                            </div>
+                        </div> 
+                        {% if request.user.is_authenticated %}
+                        <a href="https://buy.stripe.com/test_6oEe7p7clQ7m0006?client_reference_id={{request.user.usersecret}}" class="primary-button d-block text-center plan-button">Get Started</a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}" class="primary-button d-block text-center plan-button">Get Started</a>
+                        {% endif %}                                         
+                    </div>
+                   </div>
+                </div>
+
+
+
+                <div class="card-content tab-content" id="tab-2">
+                    <div class="card_item_content">
+                        <!-- card item one of Tab2 -->
+                        <div class="card_item">
+                           <div class="card_img">
+                               <img src="{% static 'images/free-trial.svg' %}" alt="">
+                           </div>
+                           <div class="card_plan_img">
+                               <img src="{% static 'images/dashboard-photo/plan/Vector 55.svg' %}" alt="">
+                           </div>
+                           <div class="card_plan_text">
+                               Current Plan
+                           </div>
+                           <div class="card_title">
+                               Free Trial
+                           </div>
+                           <div class="card_price">
+                               <span class="card_money">
+                                   $0.00
+                               </span>
+                               / one-week
+                           </div>
+                           <div class="card_text">
+                               Centralized your job and management and keeping track of your job.  
+                           </div>
+   
+                           <div class="card_point">
+                               <div class="point_img">
+                                   <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                               </div>
+                               <div class="point_text">
+                                   1 job post
+                               </div>
+                           </div>
+   
+                           <div class="card_point">
+                               <div class="point_img">
+                                   <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                               </div>
+                               <div class="point_text">
+                                   1 resume download
+                               </div>
+                           </div>
+   
+   
+                           <div class="card_point">
+                               <div class="point_img">
+                                   <img src="{% static 'images/cros_check.svg' %}" alt="">
+                               </div>
+                               <div class="point_text">
+                                   No referral and rewards
+                               </div>
+                           </div>
+   
+                           <div class="card_point">
+                               <div class="point_img">
+                                   <img src="{% static 'images/cros_check.svg' %}" alt="">
+                               </div>
+                               <div class="point_text">
+                                No customization and control
+                            </div>
+                           </div>
+                           
+                           
+                       </div>
+                       <div class="card_item">
+                        <div class="card_img">
+                            <img src="{% static 'images/free-trial.svg' %}" alt="">
+                        </div>
+                        <div class="card_title">
+                            For Professionals
+                        </div>
+                        <div class="card_price">
+                            <span class="card_money">
+                                $90.99
+                            </span>
+                            / per year
+                        </div>
+                        <div class="card_text">
+                            our service is available for centralized your job and management and keeping track of your job.
+                        </div>
+
+                        <div class="card_point">
+                            <div class="point_img">
+                                <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                            </div>
+                            <div class="point_text">
+                                50 job post
+                            </div>
+                        </div>
+
+                        <div class="card_point">
+                            <div class="point_img">
+                                <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                            </div>
+                            <div class="point_text">
+                                40 resume download
+                            </div>
+                        </div>
+                        <div class="card_point">
+                            <div class="point_img">
+                                <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                            </div>
+                            <div class="point_text">
+                                Free trial and referral rewards
+                            </div>
+                        </div>  
+                        <div class="card_point">
+                            <div class="point_img">
+                                <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                            </div>
+                            <div class="point_text">
+                                Customization and control
+                            </div>
+                        </div> 
+                        {% if request.user.is_authenticated %}
+                        <a href="https://buy.stripe.com/test_6oEe7p7clQ7m0006?client_reference_id={{request.user.usersecret}}" class="primary-button d-block text-center plan-button">Get Started</a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}" class="primary-button d-block text-center plan-button">Get Started</a>
+                        {% endif %}                                         
+                        </div>
+                        <div class="card_item">
+                            <div class="card_img">
+                                <img src="{% static 'images/free-trial.svg' %}" alt="">
+                            </div>
+                            <div class="card_title">
+                                For Students
+                            </div>
+                            <div class="card_price">
+                                <span class="card_money">
+                                    $40.99
+                                </span>
+                                / per year
+                            </div>
+                            <div class="card_text">
+                                For student we offer these aspiring professionals a 50% discount on our standard rates. 
+                            </div>
+    
+                            <div class="card_point">
+                                <div class="point_img">
+                                    <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                                </div>
+                                <div class="point_text">
+                                    20 job post
+                                </div>
+                            </div>
+    
+                            <div class="card_point">
+                                <div class="point_img">
+                                    <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                                </div>
+                                <div class="point_text">
+                                    20 resume download
+                                </div>
+                            </div>
+                            <div class="card_point">
+                                <div class="point_img">
+                                    <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                                </div>
+                                <div class="point_text">
+                                    Free trial and referral rewards
+                                </div>
+                            </div>  
+                            <div class="card_point">
+                                <div class="point_img">
+                                    <img src="{% static 'images/Check_fill.svg' %}" alt="">
+                                </div>
+                                <div class="point_text">
+                                    Customization and control
+                                </div>
+                            </div>
+                            {% if request.user.is_authenticated %}
+                            <a href="https://buy.stripe.com/test_6oEe7p7clQ7m0006?client_reference_id={{request.user.usersecret}}" class="primary-button d-block text-center plan-button">Get Started</a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}" class="primary-button d-block text-center plan-button">Get Started</a>
+                        {% endif %}                                          
+                        </div>
+                      </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock dashboard_content %}
+
+{% block extra_js %}
+
+
+  
+{% endblock extra_js %}
+    

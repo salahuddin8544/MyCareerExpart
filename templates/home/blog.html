@@ -1,0 +1,162 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block content %}
+<section class="how-it-work-hero blog-hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col col-md-12 col-12">
+                <div class="des">
+                    <h1>Guiding Career Towards Impactful Change</h1>
+                    <p>It is a long established fact that a reader will be <br> distracted by the readable content of a page when <br> looking at its layout.</p>
+                    <h6>Feb. 28, 2024</h6>
+                    <a href="{% url 'price' %}"> <button class="primary-button">Read More</button></a>
+                </div>
+            </div>
+            <div class="col-lg-6 col col-md-12 col-12">
+               <div class="background-right-first">
+                <div class="background-right-second">
+                    <div class="background-left-first">
+                        <div class="background-left-second">
+                            <div class="thumb">
+                                {% comment %} <img class="img img-fluid" src="{% static "images/plan-person.png" %}" alt=""> {% endcomment %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="industry-blogs">
+    <div class="container">
+        <section>
+            <div class="des">
+                <h3>Industry Trends</h3>
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium <br> voluptatum deleniti atque corrupti quos</p>
+            </div>
+            <div class="industry-slider">
+                <div class="owl-carousel owl-industry owl-theme">
+                    {% for blog in blogs %}
+                    <div class="item">
+                        <p>{{blog.title}}</p>
+                        {% if blog.image %}
+                       <img src="{{blog.image.url}}" alt="">
+                       {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="des">
+                <h3>Our latest and trending blog</h3>
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium <br> voluptatum deleniti atque corrupti quos</p>
+            </div>
+            <div class="row">
+                {% for blog in blogs %}
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="cards">
+                        <div class="card-item">
+                            {% if blog.image %}
+                            <img class="" src="{{blog.image.url}}" alt="">
+                            {% endif %}
+                            <h5>{{blog.title}}</h5>
+                            <p>{{blog.description|truncatewords:35}} <a href="{% url "blog_details" blog.id %}">[Read More]</a></p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+</section>
+<section class="comment-carousel pb-5">
+    <div class="container">
+        <div class="des text-center">
+            <h3 class='mb-4'>Success stories</h3>
+        </div>
+        <div class="owl-carousel comment-slider  owl-theme">
+            <div class="item">
+                <div class="carousel-card">
+                    <div class="card-item">
+                        <div class="des">
+                            <h3>"Working with My Career Expert has been a game-changer for our organization. Their strategic guidance and training programs have transformed our operations and helped us achieve our mission more effectively."</h3>
+                        </div>
+                        <img class="img img-fluid" src="{% static "images/carousel-card-background.png" %}" alt="">
+                    </div>
+                </div>
+                <div class="comment-author">
+                    <h3>- Jane Doe<span>, New York</span></h3>
+                </div>
+            </div>
+            <div class="item">
+                <div class="carousel-card">
+                    <div class="card-item">
+                        <div class="des">
+                            <h3>"Working with My Career Expert has been a game-changer for our organization. Their strategic guidance and training programs have transformed our operations and helped us achieve our mission more effectively."</h3>
+                        </div>
+                        <img class="img img-fluid" src="{% static "images/carousel-card-background.png" %}" alt="">
+                    </div>
+                </div>
+                <div class="comment-author">
+                    <h3>- Jane Doe<span>, New York</span></h3>
+                </div>
+            </div>
+            <div class="item">
+                <div class="carousel-card">
+                    <div class="card-item">
+                        <div class="des">
+                            <h3>"Working with My Career Expert has been a game-changer for our organization. Their strategic guidance and training programs have transformed our operations and helped us achieve our mission more effectively."</h3>
+                        </div>
+                        <img class="img img-fluid" src="{% static "images/carousel-card-background.png" %}" alt="">
+                    </div>
+                </div>
+                <div class="comment-author">
+                    <h3>- Jane Doe<span>, New York</span></h3>
+                </div>
+            </div>
+            <div class="item">
+                <div class="carousel-card">
+                    <div class="card-item">
+                        <div class="des">
+                            <h3>"Working with My Career Expert has been a game-changer for our organization. Their strategic guidance and training programs have transformed our operations and helped us achieve our mission more effectively."</h3>
+                        </div>
+                        <img class="img img-fluid" src="{% static "images/carousel-card-background.png" %}" alt="">
+                    </div>
+                </div>
+                <div class="comment-author">
+                    <h3>- Jane Doe<span>, New York</span></h3>
+                </div>
+            </div>
+            <div class="item">
+                <div class="carousel-card">
+                    <div class="card-item">
+                        <div class="des">
+                            <h3>"Working with My Career Expert has been a game-changer for our organization. Their strategic guidance and training programs have transformed our operations and helped us achieve our mission more effectively."</h3>
+                        </div>
+                        <img class="img img-fluid" src="{% static "images/carousel-card-background.png" %}" alt="">
+                    </div>
+                </div>
+                <div class="comment-author">
+                    <h3>- Jane Doe<span>, New York</span></h3>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="carousel-card">
+                    <div class="card-item">
+                        <div class="des">
+                            <h3>"Working with My Career Expert has been a game-changer for our organization. Their strategic guidance and training programs have transformed our operations and helped us achieve our mission more effectively."</h3>
+                        </div>
+                        <img class="img img-fluid" src="{% static "images/carousel-card-background.png" %}" alt="">
+                    </div>
+                </div>
+                <div class="comment-author">
+                    <h3>- Jane Doe<span>, New York</span></h3>
+                </div>
+            </div>
+          </div>
+    </div>
+</section>
+{% endblock content %}

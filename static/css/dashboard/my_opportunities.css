@@ -1,0 +1,375 @@
+.opportunities{
+    background-color: #fff;
+    padding: 36px 40px;
+}
+.upper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.upper_left{
+    font-weight: 700;
+    color: #015696;
+}
+.upper_right{
+    display: flex;
+    align-items: center;
+}
+.search{
+    display: flex;
+    width: 336px;
+    height: 35px;
+    border: 1px solid #015696;
+    margin-right: 12px;
+    display: flex
+}
+.search > button {
+    background: none;
+    border: none;
+}
+.search input{
+    border: none;
+    outline: none;
+    height: 32px;
+    width: 300px;
+    padding-left: 12px;
+}
+.filter{
+    font-size: 14px;
+    font-weight: 600;
+    color: #015696;
+}
+
+
+/* card css */
+.course_list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 20px; 
+    grid-row-gap: 20px; 
+}
+
+.course_item {
+    padding: 51px;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 30px 30px 30px rgba(227, 242, 253, 0.5);
+  }
+  
+.course_item:hover {
+    box-shadow: -15px 0px 20px rgba(227, 242, 253, 1), 
+                15px 0px 20px rgba(227, 242, 253, 1), 
+                0px 15px 20px rgba(227, 242, 253, 1); 
+}
+.course_item:hover .apply_button {
+    background-color: #015696;
+    color: white;
+}
+  
+
+
+ /* Set shadow properties */
+.card-title{
+    font-size: 20px;
+    font-weight: 700;
+    color: #015696;
+    margin-top: 11px;
+}
+.tags{
+    margin-top: 24px;
+}
+.tag_items{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E3F2FD;
+    width: 98px;
+    height: 37px;
+    color: #015696;
+    font-size: 14px;
+    font-weight: 600;
+}
+.institute{
+    margin: 24px 0px;
+}
+.apply_button{
+    height: 47px;
+    border: 2px solid #015696;
+    font-size: 16px;
+    font-weight: bold;
+    color: #015696;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+
+/* for responsive for top opportunities*/
+@media screen and (max-width: 790px) {
+    .upper{
+        display: grid;
+        grid-template-columns: 1fr
+    }
+    .upper_right{
+        margin-top: 15px;
+        justify-content: space-between;
+    }
+}
+
+/* 690 */
+@media screen and (max-width: 690px) {
+    .search{
+        width: auto;
+        padding-right: 8px;
+
+    }
+    .search input{
+        width: auto;
+    }
+}
+
+/* 600 */
+@media screen and (max-width: 600px) {
+    .opportunities{
+        background-color: #fff;
+        padding: 18px 20px;
+    }
+}
+
+/* 540 */
+
+@media screen and (max-width: 540px) {
+
+    .search input{
+        width: 150px;
+    }
+}
+
+
+
+
+/* Responsive for body or card sections */
+
+@media screen and (max-width: 1680px) {
+    .course_item{
+        padding: 30px;
+    }
+}
+
+@media screen and (max-width: 1510px) {
+    .course_list{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .course_list{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 522px) {
+    .course_item{
+        padding: 25px 15px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Side bar Filter CSS */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    transition: width 0.5s;
+    padding-top: 25px;
+    z-index: 1001;
+    margin-top: 0px;
+    padding-left: 20px;
+   
+    
+}
+
+.sidebar a:hover {
+    color: #030303;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0px;
+    left: 25px;
+    font-size: 36px;
+    margin-right: 50px;
+}
+
+/* .openbtn {
+    cursor: pointer;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+} */
+
+
+#main {
+    transition: margin-right .5s;
+    padding: 16px;
+
+}
+
+/*for Overlay styles */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(173, 252, 255, 0.329); 
+    z-index: 999; 
+    display: none;
+}
+
+
+
+/* soidebar filter content */
+
+.top_filter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.filter_bar{
+    font-weight: 700;
+    color: #015696;
+    font-size: 16px;
+}
+
+.accordion-item {
+
+    margin-bottom: 5px;
+    border: none;
+}
+.accordion-header {
+    padding: 10px;
+    cursor: pointer;
+}
+.accordion-content {
+    padding: 10px;
+    display: block;
+}
+.pull-right {
+    float: right;
+}
+.accordion_title{
+    font-size: 16px;
+    font-weight: 700;
+    color: #015696;
+}
+
+/* Style for checked radio button label */
+.radio_item{
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+}
+input[type="radio"] {
+    display: none; /* Hide the actual radio buttons */
+}
+
+input[type="radio"] + label {
+    cursor: pointer;
+}
+
+input[type="radio"] + label:before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 2px solid white;
+    outline: 1px solid #015696;
+    
+}
+
+input[type="radio"]:checked + label:before {
+    background-color: #015696;
+    
+}
+
+input[type="radio"]:checked + label:before {
+    content: ""; /* Unicode checkmark character */
+    /* Change the color of the checkmark */
+    text-align: center;
+    line-height: 20px;
+    
+}
+
+/* Style for checked radio button label text */
+input[type="radio"]:checked + label span {
+    font-weight: bold;
+}
+
+input[type="checkbox"]{
+    width: 18px;
+    height: 18px;
+}
+.option_name{
+    font-size: 14px;
+    padding-left: 12px;
+}
+
+/* for range */
+.any{
+    margin-top: 13px;
+    font-weight: bold;
+}
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 7px;
+    background: #D9D9D9;
+    border-radius: 20px;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #015696;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #015696;
+    cursor: pointer;
+  }
+
+  

@@ -1,0 +1,423 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block content %}
+<section class="how-it-work-hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col col-md-12 col-12">
+                <div class="des">
+                    <h1>Subscription Options</h1>
+                    <p>Tailored Subscription Plans & <br> Rewarding Referral Opportunities Await</p>
+                    <button class="primary-button">Subscribe Now</button></button>
+                </div>
+            </div>
+            <div class="col-lg-6 col col-md-12 col-12">
+               <div class="background-right-first">
+                <div class="background-right-second">
+                    <div class="background-left-first">
+                        <div class="background-left-second">
+                            <div class="thumb">
+                                <img class="img img-fluid" src="{% static "images/plan-person.png" %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="choose-plan">
+    <div class="container">
+        <div class='des'>
+            <h2>Choose flexible subscription plan</h2>
+            <p>Unlock your full career potential with our diverse range of subscription options.<br>
+                Whether you're just starting out or looking to solidify your place in the international development arena, <br>
+                we have a plan that suits your needs. <br>
+                Plus, make the most of our referral program to enjoy even more benefits. </p>
+        </div>
+    </div>
+    <div class="first-background">
+        <div class="container-fluid">
+            <div class="second-background">
+                <div class="third-background">
+                    <div class="max900 choose-plan-card">
+                        <img class="arrow-img" src="{% static "images/right-bootom-arrow.png" %}" alt="">
+                        <div class="choose-plan-buttons">
+                            <button class="primary-button tab-link current" data-tab="tab-1">Monthly</button>
+                            <button class="primary-button tab-link" data-tab="tab-2">Annual (25% Save)</button>
+                        </div>
+
+                        <div class="card-content tab-content" id="tab-1">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="card-des h-100">
+                                        <div class="card-body">
+                                            <img src="{% static "images/free-trial.svg" %}" alt="">
+                                            <h3>Free Trial</h3>
+                                            <h4>$0.00 <span>/ one-week</span></h4>
+                                            <p>Dip your toes into the vast sea of opportunities with two weeks of unrestricted access. No credit card required, just your aspiration.</p>
+                                            <div class="divider"></div>
+                                            <div class="features">
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>AI-based CV parsing</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Daily emails</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Referral and rewards</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check.svg" %}" alt="">
+                                                    <p>All jobs (also on-internal)</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check.svg" %}" alt="">
+                                                    <p>Extended keywords options</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check.svg" %}" alt="">
+                                                    <p>Language filters</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check.svg" %}" alt="">
+                                                    <p>Country filters</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check.svg" %}" alt="">
+                                                    <p>Advanced filters</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% if request.user.is_authenticated %}
+                                            <a href="https://buy.stripe.com/test_6oEe7p7clQ7m0006?client_reference_id={{request.user.usersecret}}" class="primary-button d-block text-center" disabled>Get Started</a>
+                                        {% else %}
+                                            <a href="{% url 'account_login' %}" class="primary-button d-block text-center" disabled>Get Started</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="card-des h-100">
+                                        <div class="card-body">
+                                            <img src="{% static "images/student.svg" %}" alt="">
+                                            <h3>For Students</h3>
+                                            <h4>$0.00<span>/ per month</span></h4>
+                                            <p>Designed for the up-and-coming development professional, enjoy free access with a focus on junior and internship roles, 
+                                                setting the foundation for your future.</p>
+                                            <div class="divider"></div>
+                                            <div class="features">
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>AI-based CV parsing</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Daily emails</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Referral and rewards</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check.svg" %}" alt="">
+                                                    <p>All jobs (also on-internal)</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check.svg" %}" alt="">
+                                                    <p>Extended keywords options</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check.svg" %}" alt="">
+                                                    <p>Language filters</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check.svg" %}" alt="">
+                                                    <p>Country filters</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check.svg" %}" alt="">
+                                                    <p>Advanced filters</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% if request.user.is_authenticated %}
+                                            <a href="https://buy.stripe.com/test_6oEe7p7clQ7m0006?client_reference_id={{request.user.usersecret}}" class="primary-button d-block text-center">Get Started</a>
+                                        {% else %}
+                                            <a href="{% url 'account_login' %}" class="primary-button d-block text-center">Get Started</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="card-des h-100">
+                                        <div class="card-body">
+                                            <img src="{% static "images/professional.svg" %}" alt="">
+                                            <h3>For Professionals</h3>
+                                            <h4>$9.99  <span>/ per month</span></h4>
+                                            <p>Elevate your job search with long-term access to all functionalities at an unbeatable value.</p>
+                                            <div class="divider"></div>
+                                            <div class="features">
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>AI-based CV parsing</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Daily emails</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Referral and rewards</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>All jobs (also on-internal)</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Extended keywords options</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Language filters</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Country filters</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Advanced filters</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% if request.user.is_authenticated %}
+                                        <a href="https://buy.stripe.com/test_6oEe7p7clQ7m0006?client_reference_id={{request.user.usersecret}}" class="primary-button d-block text-center">Get Started</a>
+                                        {% else %}
+                                            <a href="{% url 'account_login' %}" class="primary-button d-block text-center">Get Started</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-content tab-content current" id="tab-2">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="card-des h-100">
+                                        <div class="card-body">
+                                            <img src="{% static "images/free-trial.svg" %}" alt="">
+                                            <h3 class="text-secondary">Free Trial</h3>
+                                            <h4 class="text-secondary">$0.00 <span>/ one-week</span></h4>
+                                            <p class="text-secondary">Dip your toes into the vast sea of opportunities with two weeks of unrestricted access. No credit card required, just your aspiration.</p>
+                                            <div class="divider"></div>
+                                            <div class="features">
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check_gray.svg" %}" alt="">
+                                                    <p class="text-secondary">AI-based CV parsing</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check_gray.svg" %}" alt="">
+                                                    <p class="text-secondary">Daily emails</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check_gray.svg" %}" alt="">
+                                                    <p class="text-secondary">Referral and rewards</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check_gray.svg" %}" alt="">
+                                                    <p class="text-secondary">All jobs (also on-internal)</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check_gray.svg" %}" alt="">
+                                                    <p class="text-secondary">Extended keywords options</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check_gray.svg" %}" alt="">
+                                                    <p class="text-secondary">Language filters</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check_gray.svg" %}" alt="">
+                                                    <p class="text-secondary">Country filters</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check_gray.svg" %}" alt="">
+                                                    <p class="text-secondary">Advanced filters</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            {% if request.user.is_authenticated %}
+                                                <a href="https://buy.stripe.com/test_6oEe7p7clQ7m0006?client_reference_id={{request.user.usersecret}}" class="primary-button d-block text-center" disabled>Get Started</a>
+                                            {% else %}
+                                                <a href="{% url 'account_login' %}" class="primary-button d-block text-center" disabled>Get Started</a>
+                                            {% endif %}
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="card-des h-100">
+                                        <div class="card-body">
+                                            <img src="{% static "images/student.svg" %}" alt="">
+                                            <h3>For Students</h3>
+                                            <h4>$0.00<span>/ per year</span></h4>
+                                            <p>Designed for the up-and-coming development professional, enjoy free access with a focus on junior and internship roles, 
+                                                setting the foundation for your future.</p>
+                                            <div class="divider"></div>
+                                            <div class="features">
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>AI-based CV parsing</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Daily emails</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Referral and rewards</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check.svg" %}" alt="">
+                                                    <p>All jobs (also on-internal)</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check.svg" %}" alt="">
+                                                    <p>Extended keywords options</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check.svg" %}" alt="">
+                                                    <p>Language filters</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check.svg" %}" alt="">
+                                                    <p>Country filters</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/cros_check.svg" %}" alt="">
+                                                    <p>Advanced filters</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            {% if request.user.is_authenticated %}
+                                            <a href="https://buy.stripe.com/test_6oEe7p7clQ7m0006?client_reference_id={{request.user.usersecret}}" class="primary-button d-block text-center" >Get Started</a>
+                                            {% else %}
+                                                <a href="{% url 'account_login' %}" class="primary-button d-block text-center" >Get Started</a>
+                                            {% endif %}
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="card-des h-100">
+                                        <div class="card-body">
+                                            <img src="{% static "images/professional.svg" %}" alt="">
+                                            <h3>For Professionals</h3>
+                                            <h4>$99.99  <span>/ per year</span></h4>
+                                            <p>Elevate your job search with long-term access to all functionalities at an unbeatable value.</p>
+                                            <div class="divider"></div>
+                                            <div class="features">
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>AI-based CV parsing</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Daily emails</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Referral and rewards</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>All jobs (also on-internal)</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Extended keywords options</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Language filters</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Country filters</p>
+                                                </div>
+                                                <div class="features-item">
+                                                    <img src="{% static "images/Check_fill.svg" %}" alt="">
+                                                    <p>Advanced filters</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            {% if request.user.is_authenticated %}
+                                            <a href="https://buy.stripe.com/test_6oEe7p7clQ7m0006?client_reference_id={{request.user.usersecret}}" class="primary-button d-block text-center">Get Started</a>
+                                            {% else %}
+                                                <a href="{% url 'account_login' %}" class="primary-button d-block text-center">Get Started</a>
+                                            {% endif %}
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="plan-footer">
+                            <p>It’s an investment in your future, giving you access to personalized job alerts,
+                                customizable search settings, and a comprehensive view of career opportunities in your
+                                field.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="daily-customization-how-it-work">
+    <div class="customization">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-12">
+                    <div class="des">
+                        <h4>Free Trial</h4>
+                        <p>To ensure that MyCareer. Expert is the right fit for you, we offer a one-week free trial for
+                            all new users.</p>
+                        <p>Experience the full range of our services without any commitment.</p>
+
+                        <h4>Referral Rewards</h4>
+
+                        <p>Networking is key in the world of international development. 
+                            With our referral program, both you and your peers can extend your professional journey.</p>
+                        <p>Share your unique invitation code, and for every new paid subscription, earn additional months for your Professional Career plan. 
+                            There&#39;s no limit to how many you can refer - or how many free months you can earn.
+                        </p>
+                        <p>There&#39;s no limit to how many colleagues you can refer, which means the potential for
+                            free service extends as far as your professional network reaches.</p>
+
+                        <p>
+                        It&#39;s our way of saying thank you for helping to grow the MyCareer. Expert community and
+                        supporting each other&#39;s professional growth.
+                        </p>
+                        <a href="{% url 'account_signup' %}"> <button class="primary-button">Join Now</button></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-12">
+                    <div class="thumb">
+                        <img src="{% static "images/plan-persons.png" %}" class="img img-fluid" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% include "includes/start_journey.html" %}
+{% endblock content %}

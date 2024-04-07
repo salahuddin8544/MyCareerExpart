@@ -1,0 +1,252 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block content %}
+    <!-- register -->
+    <section class="how-it-work-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col col-md-12 col-12">
+                    <div class="des">
+                        <h1>How My Career Expert <br> Simplifies Your Path to Global Impact <br></h1>
+                        <p>Navigating the world of international development job opportunities can be complex. At My Career Expert, we streamline this journey,
+                        leveraging cutting-edge AI to match you with positions that align perfectly with your skills and career goals.</p> 
+                        <p>Here&#8217;s how our user-friendly platform guides you from discovery to application, ensuring a seamless experience at every step.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col col-md-12 col-12">
+                   <div class="background-right-first">
+                    <div class="background-right-second">
+                        <div class="background-left-first">
+                            <div class="background-left-second">
+                                <div class="thumb">
+                                    <img class="img img-fluid" src="{% static "images/how-it.svg" %}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="detail-how-it-work">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-12">
+                    <h4>This is how My Career Expert works:</h4>
+                    
+                    <div class="thumb">
+                        <img src="{% static "images/detail-person.png" %}" class="img img-fluid" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-12">
+                    <div class="detail-group">
+                        <div class="detail-list">
+                            <h5>Step 1: Job Description Analysis</h5>
+                            <p>Our AI technology meticulously analyzes job descriptions, extracting critical information such as nationality requirements, language needs, and experience prerequisites.</p>
+                            <p>This process ensures that only suitable job listings reach you.</p>
+                        </div>
+                        <div class="detail-list">
+                            <h5>Step 2: Customized Job Alerts</h5>
+                            <p>Based on the AI&#8217;s analysis and your specified preferences, receive daily emails with job opportunities tailored specifically to your professional background and aspirations.</p>
+                        </div>
+                        <div class="detail-list">
+                            <h5>Step 3: Apply with Confidence</h5>
+                            <p>Review your personalized job matches and apply to positions where your skills and experience align with the job requirements, maximizing your chances for success.</p>
+                        </div>
+                        <div class="detail-list">
+                            <h5>Step 4: Continuous Improvement</h5>
+                            <p>Refine your preferences and explore our resources to enhance your job search strategy and career growth continuously.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h5> Transform Your Career Path with Precision</h5>
+                        <a href="{% url 'price' %}"> <button class="primary-button">Get Started Today!</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="how-it-work-register">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12 col-12">
+                    <div class="des">
+                        <h4>Registration and Personalization</h4>
+                        <p>Embarking on your enhanced job search with MyCareer Expert begins <br> 
+                            with a straightforward registration process.
+                        </p>
+                        <div>
+                            <p>We understand that every consultant has unique skills and interests, which is why we&#8217;ve developed a flexible keyword selection system.</p>
+
+                           <div>
+                               <ol>
+                                    <li><strong>Upload</strong> your CV, and our AI-based system will identify the top, most appropriate keywords which are plausibe to be found in job descriptions.</li>
+                                    <li><strong>Work From Home?</strong> We got you covered! Check the box, and we will suggest to you only remote jobs!</li>
+                                    <li><strong>Languages</strong>: which one do you master? check them all!</li>
+                                    <li><strong>Customize</strong> (optional) your keywords and filters by choosing from a comprehensive list or add your own to tailor our service precisely to your career goals.</li>
+                                    <li><strong>Which Country/Continent?</strong> (optional) define the geographic areas you would like to work with/in.</li>
+                               </ol>
+                           </div>
+
+                           <p>
+                                Whether you&#39;re an expert in “project management”, “sustainable <br> development”, or have niche skills, our platform is designed to cater to your specific needs.
+                           </p>
+
+                           <p>A note about keywords: whether case-sensitive like &#8217;GIS&#8217; or &#8217;KPI&#8217; 
+                               or a more general term, our system smartly collates opportunities that are most pertinent to you. <br>
+                               Refer to the FAQ if you want to know more.
+                           </p>
+                            
+                        </div>
+                        
+                        <a href="{% url 'account_signup' %}"> <button class="primary-button">Sign Up Today</button></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-12">
+                    <div class="thumb">
+                        <img class="img img-fluid" src="{% static "images/detail-laptop.png" %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="daily-customization-how-it-work">
+        <div class="daily">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div class="thumb">
+                            <img src="{% static "images/daily-person.png" %}" class="img img-fluid" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div class="des">
+                            <h4>Daily Digests of Tailored Opportunities</h4>
+                            <h6>After setting your preferences, the power of My Career Expert comes to life.</h6>
+                            <p>Each day, you&#8217;ll receive a concise email digest containing all the relevant 
+                                job vacancies that match your selected keywords.</p>
+                            <p>This daily digest ensures that you&#8217;re always informed about the latest opportunities in your field, without the overwhelm of constant notifications.</p>
+                            <p>We strive to suggest you only opportunities which are pertintent with your experience, avoiding you the burden of pointlessly going through hundreds of job listings evry day.</p>
+                            <a href="{% url 'price' %}"> <button class="primary-button">Get Started Today!</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="customization">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div class="des">
+                            <h4>Customization and Control</h4>
+                            <h6>We believe in giving you complete control over your job search.</h6>
+                                <p>That&#8217;s why our user-friendly web interface allows you to review and edit your keyword and preferences at any time.</p>
+                                <p>The job market and your career objectives may evolve, and so should your job search criteria.</p>
+                                <p>Adjust your settings as often as you like to ensure you&#8217;re always aligned with the best and most relevant opportunities.</p>
+                                <p>With MyCareer. Expert, you&#8217;re not just searching for job&#8217;s you&#8217;re strategically positioning yourself for the next big leap in your career.</p>
+                            <a href="{% url 'price' %}"> <button class="primary-button">Get Started Today!</button></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div class="thumb">
+                            <img src="{% static "images/customize-person.png" %}" class="img img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="block-faq faq-how-it-work">
+        <div class="container">
+            <div class="block-caption">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-accordion">
+                <div class="active item">
+                    <div class="cap">
+                        <h4>Q: How does My Career Expert refine job alerts to my profile?</h4>
+                        <div>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <p>Our service utilizes advanced AI to analyze job listings, identifying key details like language requirements, nationality restrictions, and experience levels. </p>
+                        <p>This ensures you only receive job alerts that match your professional qualifications and preferences.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="cap">
+                        <h4>Q: What differentiates My Career Expert from other job platforms?</h4>
+                        <div>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <p>Unlike traditional job boards, My Career Expert applies AI technology to filter out irrelevant listings, 
+                            providing you with only the opportunities that genuinely fit your career aspirations in the international development sector. </p>
+                        <p>This in turn minimizes the time you spend sifting through irrelevant positions.</p>
+                        <p>Besides, our platform is tailored specifically for professionals in international development, providing curated opportunities in global organizations like the UN, UNDP, and others.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="cap">
+                        <h4>Q: Can I change my job preferences and alert settings?</h4>
+                        <div>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <p>Yes, you can update your job preferences and alert settings at any time through your user profile. </p>
+                        <p>This ensures that the job matches you receive remain relevant to your evolving career goals.</p>
+                        <p>Update your profile and CV at any time to keep job matches relevant.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="cap">
+                        <h4>Q: What is included in the Professional Career plan?</h4>
+                        <div>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <p>The Professional Career plan provides full access to all functionalities of My Career Expert, including personalized job alerts, downloadable CV templates, and access to exclusive webinars and newsletters. </p>
+                        <p>It&#8217;s available monthly or yearly, offering flexibility to fit your career planning.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="cap">
+                        <h4>Q: How does the referral program work?</h4>
+                        <div>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <p>Our referral program rewards you for spreading the word about My Career Expert.</p> 
+                        <p>Share your unique invitation code with friends and colleagues. </p>
+                        <p>For each one who signs up for a paid subscription using your code, both you and they receive an additional month of Professional Career subscription, with no limit on referrals.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="cap">
+                        <h4>Q: Is there support for users who are new to international development careers?</h4>
+                        <div>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <p>Absolutely.</p> 
+                        <p>All subscription tiers offer access to resources like CV templates, periodic webinars, and newsletters filled with career advice and featured jobs to support professionals at all stages of their international development careers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include "includes/start_journey.html" %}
+{% endblock content %}

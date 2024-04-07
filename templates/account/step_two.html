@@ -1,0 +1,79 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block content %}
+    <!-- register -->
+    <section class="register-hero">
+        <div class="container py-5">
+            {% if form.errors %}
+                <div class="alert alert-info" role="alert">
+                    <strong>{{ form.non_field_errors }}</strong>
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                            <li>{{ field.label }}: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <form class="register-form" method="post" action="{% url 'step_two' %}">
+                {% csrf_token %}
+                <h2>About You</h2>
+                <p >Tell us more about yourself.</p>
+                <div class="my-3">
+                    <label for="first_name" class="mb-2">Languages*</label><br>
+                    <div class="select-items d-flex gap-3">
+                        <img  src="{% static "images/language.svg" %}" alt="">
+                        <select name="language" id="cars" class="custom">
+                            <option value="volvo">Select here</option>
+                            <option value="english">english</option>
+                            <option value="polish">polish</option>
+                            <option value="deutch">deutch</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="my-3">
+                    <label for="first_name" class="mb-2">Gender*</label><br>
+                    <div class="select-items d-flex gap-3">
+                        <img  src="{% static "images/gender.svg" %}" alt="">
+                        <select name="gender" id="cars" class="custom">
+                            <option value="volvo">Select here</option>
+                            <option value="male">male</option>
+                            <option value="female">female</option>
+                            <option value="other">other</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="my-3">
+                    <label for="first_name" class="mb-2">Citizenship*</label><br>
+                    <div class="select-items d-flex gap-3">
+                        <img  src="{% static "images/location.svg" %}" alt="">
+                        <select name="citizenship" id="cars" class="custom">
+                            <option value="volvo">Select here</option>
+                            <option value="us">United State</option>
+                            <option value="ca">Canada</option>
+                            <option value="de">Germany</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="d-flex gap-4">
+                    <a href="{% url "step_one" %}" class="back-btn d-flex justify-content-center  gap-2"><img src="{% static "images/right-arrow.svg" %}" class="img img-fluid" alt="" >Back</a>
+                    <button class="continue-btn" type="submit">Continue</button>
+                </div>
+            </form>
+        </div>
+        <div class="thumb">
+            <div class="inner-background d-flex justify-content-center align-items-center">
+                <div class="position-relative">
+                    <img src="{% static "images/up-arrow.png" %}" class="img img-fluid up-img" alt="">
+                    <div class="my-career d-flex justify-content-center align-items-center">
+                        <h3 class="">
+                            <span class="text text-[#70A9ED]">My Career</span> Expert<br>is a consulting<br>firm that<br>specializes in<br>providing career<br> development
+                        </h3>
+                    </div>
+                    <img src="{% static "images/bottom-arrow.png" %}" class="down-img" alt="">
+                </div>
+            </div>
+          </div>
+    </section>
+{% endblock content %}

@@ -1,0 +1,49 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block content %}
+    <!-- register -->
+    <section class="register-hero">
+        <div class="container py-5">
+            {% if form.errors %}
+                <div class="alert alert-info" role="alert">
+                    <strong>{{ form.non_field_errors }}</strong>
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                            <li>{{ field.label }}: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <form class="register-form" method="post" action="{% url 'save_interests' %}">
+                {% csrf_token %}
+                <h2>What are you interested in?</h2>
+                <div class="interest-item">
+                    {% for interest in interests %}
+                        <label class="item">
+                            <input type="checkbox" name="interests" value="{{ interest.id }}"> {{ interest.name }}
+                        </label>
+                    {% endfor %}
+                </div>
+                <div class="d-flex gap-4">
+                    <a href="{% url "step_two" %}" class="back-btn d-flex justify-content-center gap-2"><img src="{% static "images/right-arrow.svg" %}" class="img img-fluid" alt="">Back</a>
+                    <input type="submit" class="continue-btn" value="Finish">
+                </div>
+            </form>
+        </div>
+        <div class="thumb">
+            <div class="inner-background d-flex justify-content-center align-items-center">
+                <div class="position-relative">
+                    <img src="{% static "images/up-arrow.png" %}" class="img img-fluid up-img" alt="">
+                    <div class="my-career d-flex justify-content-center align-items-center">
+                        <h3 class="">
+                            <span class="text text-[#70A9ED]">My Career</span> Expert<br>is a consulting<br>firm that<br>specializes in<br>providing career<br> development
+                        </h3>
+                    </div>
+                    <img src="{% static "images/bottom-arrow.png" %}" class="down-img" alt="">
+                </div>
+            </div>
+          </div>
+    </section>
+{% endblock content %}

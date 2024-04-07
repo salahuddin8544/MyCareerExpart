@@ -1,0 +1,91 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block content %}
+    <!-- register -->
+    <section class="register-hero">
+        <div class="container py-5">
+            {% if form.errors %}
+                <div class="alert alert-info" role="alert">
+                    <strong>{{ form.non_field_errors }}</strong>
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                            <li>{{ field.label }}: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <form class="register-form" method="post" action="{% url 'step_one' %}">
+                {% csrf_token %}
+                <h2>About You</h2>
+                <p >Tell us more about yourself.</p>
+                <div class="my-3">
+                    <label for="first_name" class="mb-2">Sectors of experience*</label><br>
+                    <div class="select-items d-flex gap-3">
+                        <img  src="{% static "images/pie-chart.svg" %}" alt="">
+                        <select name="experience_sector" id="cars" class="custom">
+                            <option disabled selected>Select here</option>
+                            <option value="finance">finance</option>
+                            <option value="bank">bank</option>
+                            <option value="maritime">maritime</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="my-3">
+                    <label for="first_name" class="mb-2">Year of experience*</label><br>
+                    <div class="select-items d-flex gap-3">
+                        <img  src="{% static "images/calendar.svg" %}" alt="">
+                        <select name="year_sector" id="cars" class="custom">
+                            <option value="1">Select here</option>
+                            <option value="2">1 year</option>
+                            <option value="3">2 year</option>
+                            <option value="4">3 year</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="my-3">
+                    <label for="first_name" class="mb-2">Country of experience</label><br>
+                    <div class="select-items d-flex gap-3">
+                        <img  src="{% static "images/world.svg" %}" alt="">
+                        <select name="country_experience" id="cars" class="custom">
+                            <option value="volvo">Select here</option>
+                            <option value="us">United State</option>
+                            <option value="ca">Canada</option>
+                            <option value="de">Germany</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="my-3">
+                    <label for="first_name" class="mb-2">Highest degree*</label><br>
+                    <div class="select-items d-flex gap-3">
+                        <img  src="{% static "images/graduation.svg" %}" alt="">
+                        <select name="highest_degree" id="cars" class="custom">
+                            <option disabled selected>Select here</option>
+                            <option value="bba">BBA</option>
+                            <option value="mba">MBA</option>
+                            <option value="msc">Msc</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="d-flex gap-4">
+                    <a href="{% url 'home' %}" class="back-btn d-flex justify-content-center  gap-2"><img src="{% static "images/right-arrow.svg" %}" class="img img-fluid" alt="" >Back</a>
+                    <button class="continue-btn" type="submit">Continue</button>
+                </div>
+            </form>
+        </div>
+        <div class="thumb">
+            <div class="inner-background d-flex justify-content-center align-items-center">
+                <div class="position-relative">
+                    <img src="{% static "images/up-arrow.png" %}" class="img img-fluid up-img" alt="">
+                    <div class="my-career d-flex justify-content-center align-items-center">
+                        <h3 class="">
+                            <span class="text text-[#70A9ED]">My Career</span> Expert<br>is a consulting<br>firm that<br>specializes in<br>providing career<br> development
+                        </h3>
+                    </div>
+                    <img src="{% static "images/bottom-arrow.png" %}" class="down-img" alt="">
+                </div>
+            </div>
+          </div>
+    </section>
+{% endblock content %}

@@ -1,0 +1,163 @@
+{% extends 'dashboard/dashboard.html' %}
+
+{% load static %}
+
+{% block dashboard_content %}
+{% if user.is_authenticated %}
+<div class="top-header-dashoard row">
+
+    <div class="header-left-dashboard col-xl-6 col-lg-6">
+        <div class="photo-dashboard">
+            <img class="profile-img" src="{% static 'images/dashboard-photo/Frame 8976.svg' %}" alt="profile Picture">
+        </div>
+        <div class="profile-name">
+            <div class="person-name">
+                {{ user.username }}
+            </div>
+            <div class="person-status">
+                <a href="{% url 'price' %}">Become a member</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-right-dashboard col-xl-6 col-lg-6">
+        <a href="{% url 'dashboard_myprofile' %}" class="view-profile-btn">
+            <img src="{% static 'images/dashboard-photo/view 1.svg' %}" alt="">
+            <span class="views-text ms-2">View Profile As</span>
+        </a>
+
+        <a href="{% url 'edit_profile' %}" class="edit-profile-btn">
+            <img src="{% static 'images/dashboard-photo/edit 1.svg' %}" alt="">
+            <span class="edit-text text-white ms-2">
+                Edit Profile
+            </span>
+        </a>
+    </div>
+</div>
+<div class="row second-row">
+    <div class="col-xl-7 information top-second-row">
+        <h4 class="information-title myinformation">My Information's</h4> <hr>
+        <table>
+            <tr>
+                <td>Citizenship:</td>
+                <th>{% if profile.exists %}{{ profile.first.citizenship }}{% endif %}</th>
+            </tr>
+
+            <tr>
+                <td>Languages:</td>
+                <th>{{ user.profile.language }}</th>
+            </tr>
+            
+            <tr>
+                <td>Highest Degree:</td>
+                <th>{{ user.profile.highest_degree }}</th>
+            </tr>
+
+            <tr>
+                <td>Experience:</td>
+                <th>
+                    {% if user.profile.year_sector == 0 or user.profile.year_sector == 1 %}
+                    {% if user.profile.year_sector %}{{ user.profile.year_sector }}{% endif %} year
+                    {% else %}
+                    {% if user.profile.year_sector %}{{ user.profile.year_sector }}{% endif %} years
+                    {% endif %}
+                  </th>
+            </tr>
+            <tr>
+                <td>Countries:</td>
+                <th>{{ user.profile.country_experience }}</th>
+            </tr>
+
+            <tr>
+                <td>E-mail(s):</td>
+                <th>{{ user.email }}</th>
+            </tr>
+
+            <tr>
+                <td>Sectors:</td>
+                <th>{{ user.profile.experience_sector }}</th>
+            </tr>
+
+            <tr>
+                <td>Gender:</td>
+                <th>{{ user.profile.gender }}</th>
+            </tr>
+
+            <tr>
+                <td>Address:</td>
+                <th class="plus-icon">
+                    <a href="#">
+                        <img src="{% static 'images/dashboard-photo/+.svg' %}" alt="">
+                        Add an address
+                    </a>
+                </th>
+            </tr>
+
+            <tr>
+                <td>Phone:</td>
+                <th class="plus-icon">
+                    <a href="#">
+                        <img src="{% static 'images/dashboard-photo/+.svg' %}" alt="">
+                        Add a phone number
+                    </a>
+                </th>
+            </tr>
+
+            <tr>
+                <td>Website:</td>
+                <th class="plus-icon">
+                    <a href="#">
+                        <img src="{% static 'images/dashboard-photo/+.svg' %}" alt="">
+                        Add a website
+                    </a>
+                </th>
+            </tr>
+
+            <tr>
+                <td>Cellphone:</td>
+                <th class="plus-icon">
+                    <a href="#">
+                        <img src="{% static 'images/dashboard-photo/+.svg' %}" alt="">
+                        Add a cellphone number
+                    </a>
+                </th>
+            </tr>
+
+            <tr>
+                <td>LinkedIn:</td>
+                <th class="plus-icon">
+                    <a href="#">
+                        <img src="{% static 'images/dashboard-photo/+.svg' %}" alt="">
+                        Add a link to LinkedIn profile
+                    </a>
+                </th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="col-xl-5 information">
+        <h4 class="attachment">
+            <div class="attachment-left information-title">Attachments</div>
+            <div class="attachment-right plus-icon information-title">
+                <a class="plus-icon" href=""><img src="{% static 'images/dashboard-photo/+.svg' %}" alt=""> Add Now</a>
+            </div> 
+        </h4><hr>
+
+        <ul class="formate-item">
+            <li>File format: doc, docx, rtf, pdf, odt, txt and zip.</li>
+            <li> Maximum one file allowed, should not exceed 5 MB.</li>
+        </ul>
+
+        <div class="cv">
+            <div class="cv-doc">
+                <img src="{% static 'images/dashboard-photo/Frame 8989.svg' %}" alt="">
+            </div>
+            <div class="cv-section">
+                <div class="cv-name">{{ user.resume.name }}</div>
+                <div class="cv-date">{{ user.resume.date_uploaded|date:"d M, Y" }}</div>
+            </div>                   
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock dashboard_content %}

@@ -1,0 +1,59 @@
+{% load static %}
+<header class="header">
+    <div class="container">
+        <div class="header-inner">
+            <a href="{% url 'home' %}" class="logo">
+                <img src="{% static 'images/mce_logo_writing.svg' %}" alt="">
+            </a>
+            <nav class="main-menu">
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'how_it_works' %}">How it works</a></li>
+                    <li><a href="{% url 'price' %}">Plan & price</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'blog' %}">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                {% if not user.is_authenticated  %}
+                <a href="{% url 'account_login' %}" class="btn-link">Log in</a>
+                <a href="{% url 'account_signup' %}" class="btn-sign-up">Sign Up</a>
+                {% else %}
+                <form method="post" action="/accounts/logout/">
+                    {% csrf_token %}
+                    <button type="submit" class=" logout-btn">logout</button>
+                </form>
+                {% endif %}
+                <div class="menu-mobile-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="menu-mobile">
+        <div class="container">
+            <div class="menu">
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'how_it_works' %}">How it works</a></li>
+                    <li><a href="{% url 'price' %}">Plan & price</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'blog' %}">Blog</a></li>
+                </ul>
+                <div class="menu-item">
+                    {% if not user.is_authenticated  %}
+                    <a href="{% url 'account_login' %}" class="btn-link">Log in</a>
+                    <a href="{% url 'account_signup' %}" class="btn-sign-up">Sign Up</a>
+                    {% else %}
+                    <form method="post" action="/accounts/logout/">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-link logout-btn">logout</button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

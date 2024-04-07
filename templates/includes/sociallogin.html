@@ -1,0 +1,11 @@
+{% load static %}
+<div class="third-party-login">
+    <form method="post" action="/accounts/google/login/">
+        {% csrf_token %}
+        <button class="google-login" type="submit"><img src="{% static "images/google.jpg" %}" class="" alt=""> <span> Continue with Google</span></button>
+    </form>
+    <form method="post" action="/accounts/linkedin_oauth2/login/">
+        {% csrf_token %}
+        <button class="google-login" type="submit"><img src="{% static "images/linkedin.png" %}" class="" alt=""> <span> Continue with LinkedIn</span></button>
+    </form>
+</div>

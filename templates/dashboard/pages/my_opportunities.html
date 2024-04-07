@@ -1,0 +1,280 @@
+{% extends 'dashboard/dashboard.html' %}
+
+{% load static %}
+
+{% block additional_stylesheets %}
+    {{ block.super }}
+ <!-- Custom CSS of this page -->
+ <link rel="stylesheet" href="{% static 'css/dashboard/my_opportunities.css' %}">
+{% endblock additional_stylesheets %}
+    
+{% block dashboard_content %}
+  <div id="main" class="opportunities">
+    <!-- topbar of this page -->
+        <div class="upper">
+            <div class="upper_left">
+                My Opportunities
+            </div>
+            <div class="upper_right">
+               <form method="GET">
+                <div class="search">
+                    <input type="text" name="q" value="{% if search_query %}{{ search_query }}{% endif %}"placeholder="Search">
+                    <button class="submit">
+                        <img src="{% static 'images/dashboard-photo/opportunities/search 1.svg' %}" alt="">
+                    </button>
+                    
+                </div>
+               </form>
+
+                <div onclick="openNav()" class="openbtn filter ms-2">
+                    <img src="{% static 'images/dashboard-photo/opportunities/filter (1) 1.svg' %}" alt="">
+                    <span class="ms-2">Filters</span>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+    <!-- body or card section of this page -->
+        <div class="course mt-5">
+
+            <div class="course_content">
+                <div class="course_list">
+                    <!-- 1st Course -->
+                    {% for job in jobs %}
+                    
+                    <div class="course_item">
+                        <div class="d-flex row">
+                            <div class="location col-6">
+                                <img src="{% static 'images/dashboard-photo/opportunities/Vector.svg' %}" alt="">
+                               {{job.location}}
+                            </div>
+                            <div class="count_time col-6">
+                                <img src="{% static 'images/dashboard-photo/opportunities/time (2) 1.svg' %}" alt="">
+                                {{ job.published_date|timesince }} ago
+                            </div>
+                        </div>
+
+                        <div class="card-title">
+                            {{job.title}}
+                        </div>
+
+                        <div class="tags">
+                            {% for job_type in job.job_type.all %}
+                            <span class="tag_items mb-2">{{job_type.name}}</span>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="institute">
+                            {% if job.company.avatar %}
+
+                             <img width="60px" height="60px" src="{{job.company.avatar.url}}" alt="">
+                            {% endif %}
+                            <span class="card-title ms-4">
+                              {{job.company.name}}
+                            </span>
+                        </div>
+
+                        <a href="{% url "price" %}" class="apply_button">
+                            Apply Now
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+
+            </div>
+
+        </div>
+
+    
+  </div>
+
+
+
+  <!-- Sidebar Filter  -->
+  <div id="mySidebar" class="sidebar">
+
+    <div class="top_filter">
+        <div class="left_side_top">
+            <img src="{% static 'images/dashboard-photo/opportunities/filter (3) 1.svg' %}" alt="">
+            <span class="filter_bar">Filter</span>
+        </div>
+        
+        <a href="javascript:void(0)" onclick="closeNav()" class="right_side">
+            <img  src="{% static 'images/dashboard-photo/opportunities/cancel 1.svg' %}" alt="">
+        </a>
+    </div>
+
+
+    <!-- accordion -->
+   <hr>
+
+   <div class="accordion">
+    <!-- for Date of Post -->
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <span class="accordion_title">
+                Date Posted
+            </span>
+            <i class="fas fa-chevron-up pull-right"></i>
+        </div>
+        <div class="accordion-content">
+            <form id="dateFilterForm" method="get">
+                <div class="radio_item">
+                    <input type="radio" name="time_filter" id="all" value="all" {% if request.GET.time_filter == 'all' %}checked{% endif %} onchange="this.form.submit()">
+                    <label for="all"><span>All</span></label>
+                </div>
+                <div class="radio_item">
+                    <input type="radio" name="time_filter" id="24hours" value="24" {% if request.GET.time_filter == '24' %}checked{% endif %} onchange="this.form.submit()">
+                    <label for="24hours"><span>Last 24 Hours</span></label>
+                </div>
+                <div class="radio_item">
+                    <input type="radio" name="time_filter" id="3days" value="3" {% if request.GET.time_filter == '3' %}checked{% endif %} onchange="this.form.submit()">
+                    <label for="3days"><span>Last 3 days</span></label>
+                </div>
+                <div class="radio_item">
+                    <input type="radio" name="time_filter" id="7days" value="7" {% if request.GET.time_filter == '7' %}checked{% endif %} onchange="this.form.submit()">
+                    <label for="7days"><span>Last 7 days</span></label>
+                </div>
+            </form>
+                       
+
+        </div>
+    </div>
+    <hr>
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <span class="accordion_title">Work Type</span>
+            <i class="fas fa-chevron-up pull-right"></i>
+        </div>
+        <form id="workTypeForm" method="get">
+            <div class="accordion-content">
+                <div class="radio_item">
+                    <input type="checkbox" name="job_type" id="fullTime" value="FullTime" {% if 'FullTime' in request.GET.getlist.job_type %}checked{% endif %} onchange="this.form.submit()">
+                    <label for="fullTime"><span class="option_name">Full-Time</span></label>
+                </div>
+                <div class="radio_item">
+                    <input type="checkbox" name="job_type" id="partTime" value="PartTime" {% if 'PartTime' in request.GET.getlist.job_type %}checked{% endif %} onchange="this.form.submit()">
+                    <label for="partTime"><span class="option_name">Part-Time</span></label>
+                </div>
+            </div>
+        </form>
+    </div>
+<hr>
+    <!-- Specializations -->
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <span class="accordion_title">Specializations</span>
+            <i class="fas fa-chevron-up pull-right"></i>
+        </div>
+        <div class="accordion-content">
+            <form id="specializationsForm" method="get">
+                {% for specialization_item in specialization_items %}
+                <div class="radio_item">
+                    <input type="checkbox" onchange="this.form.submit()" name="specializations" id="admin" value="{{specialization_item.name}}">
+                    <label for="admin"><span class="option_name">{{specialization_item.name}}</span></label>
+                </div>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+<hr>
+    <!-- Experience -->
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <span class="accordion_title">Experience</span>
+            <i class="fas fa-chevron-up pull-right"></i>
+        </div>
+        <div class="accordion-content">
+            <span class="option_value">
+                Minimum work experience
+            </span> 
+            <form id="experienceForm" method="get">
+                <input type="range" id="experience" name="experience" min="0" max="15" value="{{ request.GET.experience|default:"0" }}" onchange="this.form.submit()">
+                <output for="experience">{{ request.GET.experience|default:"0" }}</output>
+            </form>
+        </div>
+    </div>
+    <hr>
+
+    <!-- Sort By -->
+
+        <!-- for Date of Post -->
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="accordion_title">
+                    Sort By
+                </span>
+                <i class="fas fa-chevron-up pull-right"></i>
+            </div>
+            <div class="accordion-content">
+                <form id="sortForm" method="get">
+                    <div class="radio_item">
+                        <input type="radio" name="sort_by" id="relevant" value="relevant" {% if request.GET.sort_by == 'relevant' %}checked{% endif %} onchange="this.form.submit()">
+                        <label for="relevant"><span>Relevant</span></label>
+                    </div>
+                    <!-- Add more sorting options if needed -->
+                </form>
+            </div>
+        </div>
+</div>
+
+
+</div>
+
+
+<!-- for overly -->
+<div class="overlay" onclick="closeNav()"></div>
+{% endblock dashboard_content %}
+
+{% block extra_js %}
+
+<script>
+    function openNav() {
+        // $("#mySidebar").width(368);
+        $("#mySidebar").css({
+            "width": "368",
+            "overflow": "auto"
+        });
+        $("#main").css({
+            "margin-right": "0px",
+            "pointer-events": "none", 
+            "opacity": "0.5",
+        });
+        $(".overlay").show();
+    }
+// .element::-webkit-scrollbar {
+//     display: none;
+// }
+    function closeNav() {
+        // $("#mySidebar").width(0);
+        $("#mySidebar").css({
+            "width": "0",
+            "overflow": "hidden"
+        });
+
+        $("#main").css({
+            "margin-right": "0px",
+            "pointer-events": "auto", 
+            "opacity": "1",
+        });
+        $(".overlay").hide();
+    }
+
+
+    // accordion 
+    $(document).ready(function(){
+        $('.accordion-header').click(function(){
+            var $accordionItem = $(this).closest('.accordion-item');
+            $accordionItem.siblings().find('.accordion-content').slideDown();
+            $accordionItem.find('.accordion-content').slideToggle();
+            
+            // Toggle the up/down icons
+            $(this).find('i').toggleClass('fa-chevron-up fa-chevron-down');
+        });
+    });
+
+</script>
+
+{% endblock extra_js %}
+    

@@ -1,0 +1,414 @@
+{% extends 'dashboard/dashboard.html' %}
+
+{% load static %}
+
+{% block additional_stylesheets %}
+    {{ block.super }}
+    <!-- Custom CSS of this page -->
+    <link rel="stylesheet" href="{% static 'css/dashboard/edit_profile.css' %}">
+
+    <!-- Amsify CSS for Tag inputs fields  -->
+    <link rel="stylesheet" href="{% static 'css/dashboard/amsify.suggestags.css' %}">
+
+{% endblock additional_stylesheets %}
+    
+{% block dashboard_content %}
+    <div class="edit_profile">
+        <!-- Name Edit Profile Form -->
+       <form method="post">
+                {% csrf_token %}
+                {% if form.errors %}
+                <div class="alert alert-info" role="alert">
+                    <strong>{{ form.non_field_errors }}</strong>
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                            <li>{{ field.label }}: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+                <div class="ep_top">
+                    <div class="ep_right">
+                        <div class="ep_photo">
+                            <img class="profile-img" src="{% static 'images/dashboard-photo/Frame 8976.svg' %}" alt="profile Picture">
+                        </div>
+            
+                        <div class="ep_name">
+                            <div class="ep_firstname">
+                                <label id="fast_name" for="firstname">First name</label> <br>
+                                <input value="{{ user_form.instance.first_name }}" type="text"  name="first_name" class="name" placeholder="John">
+                            </div>
+                            <div class="ep_lastname">
+                                <label id="last_name" for="lastname">Last name</label> <br>
+                                <input value="{{ user_form.instance.last_name }}" type="text" name="last_name"  class="name" placeholder="Smith">
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="ep_btn">
+                        <button class="cancel">Cancel</button>
+                        <button class="save" type="submit" name="user_form_submit">Save</button>
+                    </div>
+                </div>
+        </form>
+
+        <!-- Edit Information Form here -->
+        <div class="ep_info">
+            <h3 class="ep_title mt-5">
+                My Information's
+            </h3> <hr class="mb-5">
+
+            <!-- form Start here -->
+            <form method="post">
+                {% csrf_token %}
+                {% if form.errors %}
+                <div class="alert alert-info" role="alert">
+                    <strong>{{ form.non_field_errors }}</strong>
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                            <li>{{ field.label }}: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+                <!-- email -->
+                <div class="email_section">
+                    <label class="common_label" for="email">Email</label> 
+
+
+                    <div class="common_input_item">
+                    <img src="{% static 'images/dashboard-photo/edit_profile/at 1.svg' %}" alt="">
+                    
+                    <input type="email" name="personal_email" 
+                    {% if profile_form.instance.personal_email %}
+                        value="{{ profile_form.instance.personal_email }}"
+                    {% else %}
+                        value="jhon.Smith26@gmail.com"
+                    {% endif %}  class="email_field common_input" placeholder="jhon.Smith26@gmail.com">
+                    </div>
+                </div>
+
+
+                <!-- FOR sectors of experience*-->
+                <div class="dropdown-input mt-4">
+                    <label class="common_label" for="website">Sectors of experience*</label> <br>
+                    <div class="common_input_item">
+                        <img id="closedIcon" src="{% static 'images/dashboard-photo/edit_profile/pie-chart (3) 1.svg' %}" alt="">
+
+                        <select id="sectors" value="{{ profile_form.instance.experience_sector }}"   name="experience_sector"  class="common_input select_option sectors_option" style="text-wrap: text-wrap;">
+
+                            <option value="">--Select--</option>
+                            {% for sector in sector_experiences %}
+                            <option {% if sector.name == profile_form.instance.experience_sector %}selected{% endif %}>{{sector.name}}</option>
+                            {% endfor %}
+                          </select>
+
+                          <img id="sectorsImage" class="right_icon me-1" src="{% static 'images/dashboard-photo/edit_profile/Vector 52.svg' %}" alt="">
+
+                    </div>
+                  </div>
+
+
+                <!-- FOR Year of experience*  -->
+                <div class="dropdown-input mt-4">
+                    <label class="common_label" for="website">Year of experience*</label> <br>
+                    <div class="common_input_item">
+                        <img src="{% static 'images/dashboard-photo/edit_profile/calendar (1) 2.svg' %}" alt="">
+
+                        <select id="experience" name="year_sector" class="common_input select_option">
+                            <option value="">--Select--</option>
+                            <option value="0"{% if profile_form.instance.year_sector == "0" %} selected{% endif %}>0</option>
+                            <option value="1"{% if profile_form.instance.year_sector == "1" %} selected{% endif %}>1</option>
+                            <option value="2"{% if profile_form.instance.year_sector == "2" %} selected{% endif %}>3</option>
+                            <option value="3"{% if profile_form.instance.year_sector == "3" %} selected{% endif %}>3</option>
+                            <option value="4"{% if profile_form.instance.year_sector == "4" %} selected{% endif %}>4</option>
+                            <option value="5"{% if profile_form.instance.year_sector == "5" %} selected{% endif %}>5</option>
+                            <option value="6"{% if profile_form.instance.year_sector == "6" %} selected{% endif %}>6</option>
+                            <option value="7"{% if profile_form.instance.year_sector == "7" %} selected{% endif %}>7</option>
+                            <option value="8"{% if profile_form.instance.year_sector == "8" %} selected{% endif %}>8</option>
+                            <option value="9"{% if profile_form.instance.year_sector == "9" %} selected{% endif %}>9</option>
+                            <option value="10"{% if profile_form.instance.year_sector == "10" %} selected{% endif %}>10</option>
+                        </select>
+                        
+
+                          <img id="experienceImage" class="right_icon me-1" src="{% static 'images/dashboard-photo/edit_profile/Vector 52.svg' %}" alt="">
+
+                    </div>
+                  </div>
+
+
+                  <!-- Country of experience -->
+
+                <div class="Country_experience_section mt-4">
+                    <label class="common_label" for="country">Country of experience </label> 
+
+                    <div class="common_input_item">
+                    <img src="{% static 'images/dashboard-photo/edit_profile/globe 1.svg' %}" alt="">
+                    
+                    <input type="text" name="country_experience"
+                    {% if profile_form.instance.country_experience %}
+                    value="{{ profile_form.instance.country_experience }}" 
+                    {% else %}
+                    value="Non/Primary"
+                    {% endif %}
+                       class="common_input">
+
+                    <img class="right_icon me-1" src="{% static 'images/dashboard-photo/edit_profile/Vector 52.svg' %}" alt="">
+                    </div>
+                </div>
+
+
+                <!-- Highest degree* -->
+                <div class="hightest_degree_section mt-4">
+                    <label class="common_label" for="country">Highest degree* </label> 
+
+                    <div class="common_input_item">
+                    <img src="{% static 'images/dashboard-photo/edit_profile/graduation 1.svg' %}" alt="">
+                    
+                    <input type="text" name="highest_degree"
+                    {% if profile_form.instance.highest_degree %}
+                    value="{{ profile_form.instance.highest_degree }}"
+                    {% else %}
+                    value="Non/Primary"
+                    {% endif %} class="common_input">
+
+                    <img class="right_icon me-1" src="{% static 'images/dashboard-photo/edit_profile/Vector 52.svg' %}" alt="">
+                    </div>
+                </div>
+
+                <!-- Languages* -->
+                <div class="hightest_degree_section mt-4">
+                    <label class="common_label" for="country">Languages* </label> 
+
+                    <div class="common_input_item">
+                    <img src="{% static 'images/dashboard-photo/edit_profile/translate-language 1.svg' %}" alt="">
+                    
+                    <input type="text" name="language"
+                    
+                    {% if profile_form.instance.language %}
+                    value="{{ profile_form.instance.language }}" 
+                    {% else %}
+                    value="Non/Primary"
+                    {% endif %}
+                     class="common_input">
+
+                    <img class="right_icon me-1" src="{% static 'images/dashboard-photo/edit_profile/Vector 52.svg' %}" alt="">
+                    </div>
+                </div>
+
+                <!-- for Gender Fields -->
+                <div class="dropdown-input mt-4">
+                    <label class="common_label" for="website">Gender*</label> <br>
+                    <div class="common_input_item">
+                        <img id="closedIcon" src="{% static 'images/dashboard-photo/edit_profile/gender 1.svg' %}" alt="">
+
+                        <select name="gender" id="website" class="common_input select_option" name="gender" value="{{ profile_form.instance.gender }}">
+
+                            <option value="">--Select--</option>
+                            <option value="male"{% if profile_form.instance.gender == "male" %} selected{% endif %}>Male</option>
+                            <option value="female"{% if profile_form.instance.gender == "female" %} selected{% endif %}>Female</option>
+                            <option value="other"{% if profile_form.instance.gender == "other" %} selected{% endif %}>Other</option>
+                          </select>
+                          <img id="genderImage" class="right_icon me-1" src="{% static 'images/dashboard-photo/edit_profile/Vector 52.svg' %}" alt="">
+
+                    </div>
+                  </div>
+
+
+                <!-- Citizenship* -->
+                <div class="hightest_degree_section mt-4">
+                    <label class="common_label" for="country">Citizenship* </label> 
+
+                    <div class="common_input_item">
+                    <img src="{% static 'images/dashboard-photo/edit_profile/location (7) 1 (1).svg' %}" alt="">
+                    
+                    <input name="citizenship"
+                     {% if profile_form.instance.citizenship %}
+                     value="{{ profile_form.instance.citizenship }}" 
+                     {% else %}
+                     value="Non/Primary"
+                     {% endif %}
+                     type="text" name="citizenship" class="common_input">
+
+                    <img class="right_icon me-1" src="{% static 'images/dashboard-photo/edit_profile/Vector 52.svg' %}" alt="">
+                    </div>
+                </div>
+                  
+                <!-- Specializations* -->
+                <div class="hightest_degree_section mt-4">
+                    <label class="common_label" for="country">Specializations* </label> 
+
+                    <div class="common_input_item">
+                    <img src="{% static 'images/dashboard-photo/edit_profile/location (7) 1 (1).svg' %}" alt="">
+                    
+                    <input type="text" name="specializations" 
+                     {% if profile_form.instance.specializations %}
+                     value="{{ profile_form.instance.specializations }}" 
+                     {% else %}
+                     value="Non/Primary"
+                     {% endif %}
+                     class="common_input specializations">
+
+                    <img class="right_icon me-1" src="{% static 'images/dashboard-photo/edit_profile/Vector 52.svg' %}" alt="">
+                    </div>
+                </div>
+
+
+                <!-- Address* -->
+                <div class="address_section mt-3">
+                    <label class="common_label" for="address*">Address*</label> 
+
+
+                    <div class="common_input_item">
+                    <img src="{% static 'images/dashboard-photo/edit_profile/location (7) 1 (2).svg' %}" alt="">
+                    
+                    <input type="text" name="address"
+                    {% if profile_form.instance.address %}
+                    value="{{ profile_form.instance.address }}" 
+                    {% else %}
+                    value="Enter your address"
+                    {% endif %}
+                    value="{{ profile_form.instance.address }}" class="address_field common_input" placeholder="Enter your address" autocomplete="on">
+                    </div>
+
+                </div>
+                <!-- Address* Website -->
+                <div class="wesitelink_section mt-3">
+                    <label class="common_label" for="address">Address*</label> 
+
+
+                    <div class="common_input_item">
+                    <img src="{% static 'images/dashboard-photo/edit_profile/link (3) 1.svg' %}" alt="">
+                    
+                    <input type="link" name="website" 
+                    {% if profile_form.instance.website %}
+                    value="{{ profile_form.instance.website }}"
+                    {% else %}
+                    value="Enter your website link"
+                    {% endif %}
+                    class="websitelink_field common_input" placeholder="Enter your website link" autocomplete="on">
+                    </div>
+
+                </div>
+                <!-- LinkedIn* -->
+                <div class="linkedin_section mt-3">
+                    <label class="common_label" for="linkedIn*">LinkedIn*</label> 
+
+
+                    <div class="common_input_item">
+                    <img src="{% static 'images/dashboard-photo/edit_profile/linkedin (6) 1.svg' %}" alt="">
+                    
+                    <input type="text" name="linkedIn"     
+                    {% if profile_form.instance.linkedIn %}
+                     value="{{ profile_form.instance.linkedIn }}"
+                    {% else %}
+                    value="Enter your linkedIn link"
+                    {% endif %}
+                    class="linkedin_field common_input" placeholder="Enter your linkedIn link" autocomplete="on">
+                    </div>
+
+                </div>
+
+                <!-- Phone Number* -->
+                <div class="phone_number_section mt-3">
+                    <label class="common_label" for="phone_number*">Phone Number*</label> 
+
+
+                    <div class="common_input_item">
+                    <img src="{% static 'images/dashboard-photo/edit_profile/phone (13) 1.svg' %}" alt="">
+                    
+                    <input type="tel" name="phone"
+                     {% if profile_form.instance.phone %}
+                     value="{{profile_form.instance.phone }}"
+                    {% else %}
+                    value="Phone number"
+                    {% endif %}
+                     class="phone_number_field common_input" placeholder="Phone number" autocomplete="on">
+                    
+                    <img class="right_icon me-1" src="{% static 'images/dashboard-photo/edit_profile/edit 1.svg' %}" alt="">
+                    </div>
+
+                </div>
+
+
+                <!-- button for Save and Cancel -->
+                <div class="ep_btn mt-5">
+                    <button class="cancel">Cancel</button>
+                    <button class="save" type="submit" name="profile_form_submit">Save</button>
+                </div>
+
+
+
+
+            </form>
+        </div>
+    </div>
+{% endblock dashboard_content %}
+
+{% block extra_js %}
+<script src="{% static 'js/dashboardjs/jquery.amsify.suggestags.js' %}"></script>
+<script>
+    var Countries = [
+    {% for coungtry in countries %}
+        "{{ coungtry.name }}"{% if not forloop.last %},{% endif %}
+    {% endfor %}
+    ];
+    var HighestDegree = [
+    {% for degree in degrees %}
+        "{{ degree.name }}"{% if not forloop.last %},{% endif %}
+    {% endfor %}
+    ];
+    var Languages = [
+    {% for language in languages %}
+        "{{ language.name }}"{% if not forloop.last %},{% endif %}
+    {% endfor %}
+    ];
+    var Specializations = [
+    {% for specialization in specializations %}
+        "{{ specialization.name }}"{% if not forloop.last %},{% endif %}
+    {% endfor %}
+    ];
+    $(document).ready(function() {
+        // Country of experience
+        $('input[name="country_experience"]').amsifySuggestags({
+            type: 'bootstrap',
+            suggestions: Countries,
+            tagLimit: 2,
+        });
+
+        // Highest degree* highest_degree
+        $('input[name="highest_degree"]').amsifySuggestags({
+            type: 'bootstrap',
+            suggestions: HighestDegree,
+            tagLimit: 1,
+        });
+
+        // Languages Input fields
+        $('input[name="language"]').amsifySuggestags({
+            type: 'bootstrap',
+            suggestions: Languages,
+            tagLimit: 3,
+        });
+
+        // citizenship
+        $('input[name="citizenship"]').amsifySuggestags({
+            type: 'bootstrap',
+            suggestions: Countries,
+            tagLimit: 2,
+        });
+
+        // specializations
+        $('input[name="specializations"]').amsifySuggestags({
+            type: 'bootstrap',
+            suggestions:Specializations,
+            tagLimit: 5,
+        });
+    });
+</script>
+  
+{% endblock extra_js %}
+    

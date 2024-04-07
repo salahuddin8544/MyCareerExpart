@@ -1,0 +1,90 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load socialaccount %}
+
+{% block content %}
+    <!-- register -->
+    <section class="register-hero">
+        <div class="container py-5">
+            {% if form.errors %}
+                <div class="alert alert-info" role="alert">
+                    <strong>{{ form.non_field_errors }}</strong>
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                            <li>{{ field.label }}: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <form class="register-form" method="post" action="{% url 'account_signup' %}">
+                {% csrf_token %}
+                <h2>Register</h2>
+                <p >Enter the information you entered while signup.</p>
+                <div class="d-lg-flex gap-3 my-3">
+                    <div class="w-100">
+                        <label for="first_name" class="font-medium">First name</label><br>
+                        <input type="text" id="first_name" name="first_name" placeholder="Enter your first name"
+                            class="form-control mt-2" />
+                    </div>
+                    <div class="w-100">
+                        <label for="last_name" class="font-medium">Last Name</label><br>
+                        <input type="text" id="last_name" name="last_name" placeholder="Enter your last name"
+                            class="form-control mt-2" />
+                    </div>
+                </div>
+                <div class="my-3">
+                    <label for="email" class="font-medium">Email</label><br>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address"
+                        class="form-control mt-2" />
+                </div>
+                <div class="my-3">
+                    <label for="password1" class="font-medium">Password</label><br>
+                    <input type="password" id="password1" name="password1" placeholder="* * * * * * * * * *"
+                        class="form-control mt-2" />
+                </div>
+                <div class="my-3">
+                    <label for="password2" class="font-medium">Confirm Password</label><br>
+                    <input type="password" id="password2" name="password2" placeholder="* * * * * * * * * *"
+                        class="form-control mt-2" />
+                </div>
+                <h3>Upload your resume</h3>
+                <div class="d-md-flex gap-3 pt-2">
+                    <div class="file-upload">
+                        <input id="file" type="file" name="resume" class="d-none">
+                        <label for="file">Browse</label>
+                    </div>
+                    <ul class="mt-2 md:mt-0">
+                        <li>File format: doc, docx, rtf, pdf, odt, txt and zip.</li>
+                        <li>Maximum one file allowed, should not exceed 5 MB.</li>
+                    </ul>
+                </div>
+
+                <div class="d-flex gap-4 checkbox">
+                <label class="position-relative mt-1"> 
+                    <input name="newsletter" type="checkbox">
+                    <span class="checkmark"></span>
+                    </label>
+                    <p>I want to receive information about news, opportunities, offers, and website updates via email. (Optional)</p>
+                </div>
+                <button type="submit">Sign Up</button>
+
+            </form>
+            {% include 'includes/sociallogin.html' %}
+        </div>
+        <div class="thumb">
+            <div class="inner-background d-flex justify-content-center align-items-center">
+                <div class="position-relative">
+                    <img src="{% static "images/up-arrow.png" %}" class="img img-fluid up-img" alt="">
+                    <div class="my-career d-flex justify-content-center align-items-center">
+                        <h3 class="">
+                            <span class="text text-[#70A9ED]">My Career</span> Expert<br>is a consulting<br>firm that<br>specializes in<br>providing career<br> development
+                        </h3>
+                    </div>
+                    <img src="{% static "images/bottom-arrow.png" %}" class="down-img" alt="">
+                </div>
+            </div>
+          </div>
+    </section>
+{% endblock content %}

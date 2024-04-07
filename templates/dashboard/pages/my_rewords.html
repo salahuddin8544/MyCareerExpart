@@ -1,0 +1,158 @@
+{% extends 'dashboard/dashboard.html' %}
+
+{% load static %}
+
+{% block additional_stylesheets %}
+    {{ block.super }}
+    <!-- Custom CSS of this page -->
+    <link rel="stylesheet" href="{% static 'css/dashboard/my_rewords.css' %}">
+
+
+{% endblock additional_stylesheets %}
+    
+{% block dashboard_content %}
+    <div class="rewords">
+        <div class="rewords_title">My Rewords</div> <hr>
+        <div class="rafers mt-2">Refer and Earn</div>
+        <p class="rafers_content">
+            When you refer a colleague who subscribes to our yearly plan, both you and your colleague receive an additional month
+of service absolutely free.
+        </p>
+
+        <div class="rafer_content_body">
+            <div class="rafer_box">
+                <div class="box_title">Copy your code:</div> <hr>
+
+                <div class="reword_point">
+                    <input type="text" class="reword_box" id="textInput" value="MYCareerExpert52QD" readonly>
+                    <button class="copy_btn" id="copyButton">Copy</button>
+                </div>
+
+                <div class="share_icon">
+                    
+                    <div class="share_left">
+                        <img width="25px" height="27px" src="{% static 'images/dashboard-photo/rewords/Group.svg' %}" alt="social_icon  "> 
+                    
+                     <span class="share_text ms-2">Share on:</span>
+                     
+                    </div>
+                     <div class="share_right">
+                        <!-- what's app -->
+                     <a class="social_link" href="#">
+                        <img width="38px" height="38px" src="{% static 'images/dashboard-photo/rewords/whatsapp.svg' %}" alt="social_icon   ">
+                     </a>
+                     <!-- massenger -->
+                     <a class="social_link" href="#">
+                        <img width="38px" height="38px" src="{% static 'images/dashboard-photo/rewords/facebook-messenger.svg' %}" alt="social_icon ">
+                     </a>
+                     <!-- Twiter or X -->
+                     <a class="social_link" href="#">
+                        <img width="38px" height="38px" src="{% static 'images/dashboard-photo/rewords/twitter.svg' %}" alt="social_icon    ">
+                     </a>
+                     <!-- Instagram -->
+                     <a class="social_link" href="#">
+                        <img width="38px" height="38px" src="{% static 'images/dashboard-photo/rewords/instagram.svg' %}" alt="social_icon  ">
+                     </a>
+                     </div>
+                </div>
+
+            </div>
+            <div class="rafer_table table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="checkbox-cell">
+                                    <span class="checkbox_input">
+                                        <input type="checkbox" id="selectAllCheckbox">
+                                    </span>
+                                </th>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td class="checkbox-cell">
+                                    <span class="checkbox_input">
+                                        <input type="checkbox" class="singleCheckbox">
+                                    </span>
+                                </td>
+                                <td>#1</td>
+                                <td>Harvey Blake</td>
+                                <td>27 July, 2023</td>
+                                <td><span class="sending">Sending</span> </td>
+                            </tr>
+                            <tr>
+                                <td class="checkbox-cell">
+                                    <span class="checkbox_input">
+                                        <input type="checkbox" class="singleCheckbox">
+                                    </span>
+                                </td>
+                                <td>#1</td>
+                                <td>Harvey Blake</td>
+                                <td>27 July, 2023</td>
+                                <td><span class="sending">Sending</span> </td>
+                            </tr>
+                            <tr>
+                                <td class="checkbox-cell">
+                                    <span class="checkbox_input">
+                                        <input type="checkbox" class="singleCheckbox">
+                                    </span>
+                                </td>
+                                <td>#1</td>
+                                <td>Harvey Blake</td>
+                                <td>27 July, 2023</td>
+                                <td><span class="sending">Sending</span> </td>
+                            </tr>
+                            <tr>
+                                <td class="checkbox-cell">
+                                    <span class="checkbox_input">
+                                        <input type="checkbox" class="singleCheckbox">
+                                    </span>
+                                </td>
+                                <td>#1</td>
+                                <td>Harvey Blake</td>
+                                <td>27 July, 2023</td>
+                                <td><span class="sending">Sending</span> </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+{% endblock dashboard_content %}
+
+{% block extra_js %}
+<!-- for Input box Refers ID Copy -->
+<script>
+    $(document).ready(function(){
+        $("#copyButton").click(function(){
+            var textToCopy = $("#textInput").val();
+            var tempInput = $("<input>");
+            $("body").append(tempInput);
+            tempInput.val(textToCopy).select();
+            document.execCommand("copy");
+            tempInput.remove();
+            alert("Copied to clipboard: " + textToCopy);
+        });
+    });
+</script>
+
+<!-- table checkbox -->
+<script>
+    $(document).ready(function(){
+        // Select all checkboxes when selectAllCheckbox is checked
+        $("#selectAllCheckbox").change(function(){
+            $(".singleCheckbox").prop('checked', $(this).prop("checked"));
+        });
+    });
+</script>
+
+  
+{% endblock extra_js %}
+    

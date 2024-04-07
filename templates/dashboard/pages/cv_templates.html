@@ -1,0 +1,44 @@
+{% extends 'dashboard/dashboard.html' %}
+
+{% load static %}
+
+{% block additional_stylesheets %}
+    {{ block.super }}
+    <!-- Custom CSS of this page -->
+    <link rel="stylesheet" href="{% static 'css/dashboard/cv_templates.css' %}">
+
+
+{% endblock additional_stylesheets %}
+    
+{% block dashboard_content %}
+    <div class="cv_templates">
+        <div class="cv_header">
+            CV Templates
+        </div> <hr>
+        <div class="cv_content">
+            <!-- CV item Two -->
+            {% for cv_template in cv_templates %}
+            <div class="cv_item">
+                {% if cv_template.resume %}
+                <a target="_blank" class="cv_link" href="{{ cv_template.resume.url }}" download>
+
+                    <img class="downlaod_icon" src="{% static 'cv_templates/downlaod 1.svg' %}" alt="CV or Icon">
+
+                    <span class="dwn"> Download</span>
+                </a>
+                {% endif %}
+                {% if cv_template.avatar %}
+                <img class="cv_pic" src="{{ cv_template.avatar.url }}" alt="CV Image">
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock dashboard_content %}
+
+{% block extra_js %}
+
+
+  
+{% endblock extra_js %}
+    

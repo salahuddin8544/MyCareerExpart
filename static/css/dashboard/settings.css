@@ -1,0 +1,76 @@
+.settings{
+    padding: 24px;
+    background-color: #fff;
+}
+.setting_heaer{
+    font-size: 20px;
+    font-weight: 700;
+    color: #2B2D60;
+}
+.change_title{
+    color: #2B2D60;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 30px 0px 20px;
+}
+.label_title{
+    color: #000000;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 12px 0px 4px;
+}
+.top_input_box{
+    display: flex;
+}
+
+.current_item{
+    margin-right: 30px;
+}
+
+/* C8DDEC 412 53 */
+.input_box {
+    width: 412px;
+    height: 53px;
+    outline: none;
+    border: 1px solid #C8DDEC;
+    padding-left: 15px;
+}
+.save_button{
+    background-color: #015696;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 25px;
+    border: none;
+    outline: none;
+    width: 148px;
+    height: 47px;
+}
+
+/* 1058 */
+@media screen and (max-width:1058px) {
+    .top_input_box{
+        display: block;
+    }
+    .label_title{
+        margin-top: 20px;
+    }
+    .current_item{
+        margin-right: 0px;
+    }
+}
+
+/* 600 */
+@media screen and (max-width:600px) {
+    .input_box{
+        width: 100%;
+        font-size: 13px;
+    }
+    .save_button{
+        font-size: 13px;
+        font-weight: 600;
+
+        width: 100px;
+        height: 35px;
+    }
+}

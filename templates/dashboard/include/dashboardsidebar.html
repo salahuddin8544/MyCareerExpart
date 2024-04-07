@@ -1,0 +1,51 @@
+{% load static %}
+<ul class="side-bar col-xl-2 col-lg-1 col-md-1 col-sm-2 col-2">
+    <li>
+        <a href="{% url 'my_opportunities' %}">
+            <img class="side-icon" src="{% static 'images/dashboard-photo/dashboard 1.svg' %}" alt="">
+            <span class="side-bar-item">Dashboard</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{% url 'dashboard_myprofile' %}">
+            <img class="side-icon" src="{% static 'images/dashboard-photo/user (18) 2.svg' %}" alt="">
+            <span class="side-bar-item">My profile</span> 
+    </a>
+    </li>
+
+    <li>
+        <a href="{% url 'my_plan' %}">
+            <img class="side-icon" src="{% static 'images/dashboard-photo/marketing-plan 1.svg' %}" alt="">
+            <span class="side-bar-item">Plan</span> 
+        </a> 
+    </li>
+
+    <li>
+        <a href="{% url 'billing' %}">
+            <img class="side-icon" src="{% static 'images/dashboard-photo/table 1.svg' %}" alt="">
+            <span class="side-bar-item">Billing</span> 
+        </a> 
+    </li>
+
+    <li><a href="{% url 'settings' %}">
+            <img class="side-icon" src="{% static 'images/dashboard-photo/settings (5) 1.svg' %}" alt="">
+            <span class="side-bar-item">Settings</span> 
+        </a>    
+    </li>
+
+    <li>
+        <a href="{% url 'my_rewords' %}">
+            <img class="side-icon" src="{% static 'images/dashboard-photo/rewards 1.svg' %}" alt="">
+            <span class="side-bar-item">My Rewards</span> 
+        </a> 
+    </li>
+
+    <li>
+        <a href="{% url 'cv_templates' %}">
+            <img class="side-icon" src="{% static 'images/dashboard-photo/cv 1.svg' %}" alt="">
+            <span class="side-bar-item">CV Templates</span> 
+        </a> 
+    </li>
+
+</ul>

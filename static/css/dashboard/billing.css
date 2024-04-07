@@ -1,0 +1,144 @@
+.billing{
+    background-color: white;
+    padding: 35px 40px;
+}
+.billing_title{
+    font-size: 20px;
+    font-weight: 600;
+    color: #2B2D60;
+}
+
+.choose-plan-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 45px 0px 35px;
+}
+.primary-button {
+    border: 1px solid #015696;
+    background-color: black;
+}
+.card_item_content{
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    justify-content: center;
+    grid-gap: 38px;
+    margin: 0 auto;   
+    
+    
+}
+.card_item{
+    padding: 24px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+    transform: perspective(100px) rotateX(0deg); 
+    position: relative;
+    height: 586px;
+}
+.card_plan_img{
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
+.card_plan_text{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: white;
+    font-size: 12px;
+}
+
+
+.card_img{
+    width: 72px;
+    height: 72px;
+    margin-bottom: 18px;
+     
+}
+
+.card_title{
+    font-size: 28px;
+    font-weight: 700;
+    color: #015696;
+    margin-bottom: 7px;
+    margin-top: 40px;
+}
+.card_price .card_money{
+    font-size: 24px;
+    font-weight: 700;
+
+}
+.card_text{
+    font-size: 14px;
+    margin-bottom: 25px;
+    margin-top: 12px;
+    text-align: left;
+    
+}
+
+.card_point{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.point_text{
+    color: #015696;
+    font-size: 14px;
+    padding-left: 7px;
+}
+.card_member_link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+    width: 252px;
+    height: 48px;
+    background-color: #015696;
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    bottom: 24px;  
+}
+.plan-button {
+    background-color: #015696 !important;
+}
+.plan-button:hover {
+    color: #ffff;
+    background-color: #2B2D60 !important;
+}
+/* 1276 */
+@media screen and (max-width:1276px) {
+    .card_item_content{
+        grid-gap: 18px;
+    }
+}
+
+/* 1110 */
+@media screen and (max-width:1276px) {
+    .card_item_content{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 38px;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+}
+
+/* 496 */
+
+@media screen and (max-width: 496px) {
+    .billing{
+        background-color: white;
+        padding: 2px 2px;
+    }
+
+}
+
+/* 420 */
+@media screen and (max-width: 420px) {
+        .tab_btn{
+            padding: 15px;
+        }
+}

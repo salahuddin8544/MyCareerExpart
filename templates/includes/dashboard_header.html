@@ -1,0 +1,176 @@
+{% load static %}
+
+<style>
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      -webkit-user-select: none; /* Safari 3.1+ */
+      -moz-user-select: none; /* Firefox 1.0+ */
+      -ms-user-select: none; /* Internet Explorer 10+ */
+      user-select: none; /* Standard syntax */
+    }
+  
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 15000;
+      
+    }
+  
+    .dropdown-content a, .dropdown-content form{
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+  
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+  
+    .profile-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 7px;
+      cursor: pointer;
+    }
+  
+    .dropdown .profile-icon:last-child {
+      margin-right: 10px;
+    }
+  
+    /* Adjust dropdown content position */
+    .open {
+      display: block;
+    }
+
+    .logout-btn{
+        border: none;
+        text-decoration: none;
+        padding-left: 15px;
+        color: white !important;
+        width:100%;
+    }
+    .btn-link{
+      padding-bottom: 12px;
+    }
+  </style>
+
+
+<header class="header">
+    <div class="container-fluid ">
+        <div class="header-inner">
+            <a href="{% url 'home' %}" class="logo">
+              <img src="{% static 'images/Logo.png' %}" alt="">
+          </a>
+            <nav class="main-menu">
+                <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li><a href="{% url 'how_it_works' %}">How it works</a></li>
+                  <li><a href="{% url 'price' %}">Plan & price</a></li>
+                  <li><a href="{% url 'about' %}">About Us</a></li>
+                  <li><a href="{% url 'blog' %}">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                {% if not user.is_authenticated  %}
+                <a href="{% url 'account_login' %}" class="btn-link">Log in</a>
+                <a href="{% url 'account_signup' %}" class="btn-sign-up">Sign Up</a>
+                {% else %}
+
+                
+                <div class="dropdown me-5" id="profileDropdown">
+                  <div onclick="toggleDropdown()" href="">
+                      {% if user.avatar %}
+                          <img src="{{ user.avatar.url }}" alt="" class="profile-icon">
+                      {% else %}
+                          <!-- Default avatar or placeholder image -->
+                          <img src="{% static 'path_to_default_avatar_image.jpg' %}" alt="" class="profile-icon">
+                      {% endif %}
+                      Hello, {{ user.username }}
+                      <img src="{% static 'images/dashboard-photo/Vector 52.svg' %}" alt="">
+                  </div>
+                  
+                  <div class="dropdown-content" id="dropdownContent">
+                      <a href="{% url "dashboard_myprofile" %}">View Profile</a>
+                      <a href="{% url "edit_profile" %}">Edit Profile</a>
+                      <form method="post" action="/accounts/logout/">
+                          {% csrf_token %}
+                          <button type="submit" class="btn-link logout-btn">Logout</button>
+                      </form>
+                  </div>
+              </div>
+              
+                <!-- <form method="post" action="/accounts/logout/">
+                    {% csrf_token %}
+                    
+                    <button type="submit" class="btn-link">Logout</button>
+                </form> -->
+                {% endif %}
+                <div class="menu-mobile-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="menu-mobile">
+        <div class="container">
+            <div class="menu">
+                <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li><a href="{% url 'how_it_works' %}">How it works</a></li>
+                  <li><a href="{% url 'price' %}">Plan & price</a></li>
+                  <li><a href="{% url 'about' %}">About Us</a></li>
+                  <li><a href="{% url 'blog' %}">Blog</a></li>
+                </ul>
+                <div class="menu-item">
+                    {% if not user.is_authenticated  %}
+                    <a href="{% url 'account_login' %}" class="btn-link">Log in</a>
+                    <a href="{% url 'account_signup' %}" class="btn-sign-up">Sign Up</a>
+                    {% else %}
+                    
+
+
+
+                    <form method="post" action="/accounts/logout/">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-link logout-btn">Logout</button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+{% block extra_js %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  // jQuery function to toggle dropdown content
+  function toggleDropdown() {
+    $(".dropdown-content").toggle();
+  }
+  
+  // jQuery to close dropdown when clicking outside
+  $(document).click(function(event) {
+    var $target = $(event.target);
+    if (!$target.closest('.dropdown').length && 
+        $('.dropdown-content').is(":visible")) {
+      $(".dropdown-content").hide();
+    }        
+  });
+  </script>
+{% endblock extra_js %}
+  

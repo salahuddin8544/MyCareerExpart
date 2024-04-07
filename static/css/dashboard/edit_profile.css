@@ -1,0 +1,213 @@
+.edit_profile{
+    background: white;
+    font-family: montserrat;
+    padding: 53px 18px 50px 43px;
+    border-radius: 10px;
+}
+
+.ep_top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ep_top .ep_right{
+    display: flex;
+}
+.ep_top .ep_right .ep_photo .profile_img{
+    width: 81px;
+    height: 81px;
+}
+.ep_top .ep_right .ep_name{
+    display: flex;
+    margin-left: 20px;
+    
+}
+
+.ep_top .ep_right .ep_name .name{
+    width: 273px;
+    height: 53px;
+    outline: none;
+    border: 1px solid #C8DDEC;
+    padding-left: 20px;
+    
+}
+.ep_top .ep_right .ep_name label{
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.ep_top .ep_right .ep_name .ep_firstname{
+    margin-right: 30px;
+}
+.ep_top .ep_btn{
+    margin-right: 45px;
+}
+.ep_top .ep_btn button{
+    border: 1px solid black;
+    outline: none;
+    background: none;
+    color: #015696;
+    height: 56px;
+}
+
+.ep_btn button.cancel{
+    width: 116px;
+    height: 47px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 15px;
+    outline: none;
+    border: 1px solid #015696;
+    color: #015696;
+}
+
+.ep_btn button.save{
+    width: 102px;
+    height: 47px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #015696;
+    outline: none;
+    border: 1px solid #015696;
+}
+
+
+/* Edit Information Section */
+
+.ep_title{
+    font-size: 16px;
+    font-weight: 700;
+    color: #2B2D60;
+}
+.common_label{
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.common_input_item{
+    width: 576px;
+    height: 53px;
+    border: 1px solid #015696;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+.common_input{
+    margin-left: 15px;
+    height: 51px;
+    width: 476px;
+    outline: none;
+    border: none;
+}
+.email_field::selection{
+    background: none;
+}
+.common_input:focus{
+    background-color: none;
+}
+
+.dropdown-input .select_option, .phone_number_field{
+    appearance: none; /* Remove default arrow on Chrome */
+    -webkit-appearance: none; /* Remove default arrow on Safari */
+    background: none;
+}
+/* .dropdown-input .select_option option{
+    outline: none;
+    border: none;
+} */
+
+.dropdown-input .select_option option {
+    padding: 10px; /* Increase padding to increase height */
+    font-size: 18px; /* Adjust font size */
+}
+
+.sectors_option{
+    white-space: normal;
+}
+
+  @media Screen and (max-width: 1380px) {
+    .ep_top{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .ep_btn{
+        margin-top: 35px;
+    }
+  }
+
+  @media Screen and (max-width: 850px) {
+    .ep_top .ep_right .ep_name{
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-left: 50px;
+        
+    }
+    .ep_top .ep_right .ep_name .name{
+        width: 400px;  
+    }
+    .ep_firstname{
+        margin-bottom: 25px;
+    }
+    .ep_top .ep_right .ep_name .ep_firstname{
+        margin-right: 0px;
+    }
+    .ep_top .ep_right .ep_photo{
+        display: flex;
+        align-items: center;
+    }
+  }
+
+  @media Screen and (max-width: 770px) {
+    .common_input_item{
+        width: 100%;
+        padding-left: 10px;
+    }
+    .ep_top .ep_right .ep_name .name{
+        width: 300px;  
+    }
+    .amsify-suggestags-input{
+        background-color: none;
+    }
+    .edit_profile{
+        padding: 20px 20px 20px 20px;
+
+    }
+    .common_input_item {
+        display: flex;
+        align-items: center;
+    }
+      
+    .left_icon {
+        margin-right: 10px; /* Adjust as needed */
+    }
+      
+    .right_icon {
+        margin-left: auto; /* Push the right icon to the right */
+    }      
+  }
+
+  @media Screen and (max-width: 650px) {
+    .ep_top .ep_right{
+        display: grid;
+        grid-template-columns: 1fr;
+        padding-left: 0px;
+    }
+    .ep_name{
+        margin-left: 0px !important;
+        margin-top: 15px;
+    }
+    .ep_name .name{
+        width: 100% !important;
+    }
+    .ep_photo {
+        display: flex;
+        justify-content: center;
+    }
+    .edit_profile{
+        padding: 20px 8px 20px 8px;
+
+    }
+ 
+   
+  }

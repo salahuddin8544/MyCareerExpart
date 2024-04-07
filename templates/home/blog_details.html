@@ -1,0 +1,50 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load editorjs %}
+{% block content %}
+<section class="blog-details">
+    <div class="container">
+        <div class="des">
+            <div class="thumb">
+                {% if blog.image %}
+                <img src="{{blog.image.url}}" alt="">
+                {% endif %}
+            </div>
+            <div class="date">
+                <img src="{% static "images/date.svg" %}" alt="">
+                <p>{{blog.created_at}}</p>
+            </div>
+            <div class="des-item">
+                <h3>{{blog.title}}</h3>
+                <p>{{blog.description}}</p>
+            </div>
+            <div class="des-item">
+                {{ post.body_default }}
+                {{ blog.content | editorjs}}
+            </div>          
+        </div>
+    </div>
+</section>
+<section class="industry-blogs blog-details-carousel">
+    <div class="container">
+        <div class="des text-center">
+            <h3 class='mb-4'>Related Post</h3>
+        </div>
+        <div class="owl-carousel owl-theme">
+            {% for blog in blogs %}
+            <div class="item">
+                <div class="cards">
+                    <div class="card-item">
+                        {% if blog.image %}
+                        <img class="" src="{{blog.image.url}}" alt="">
+                        {% endif %}
+                        <h5>{{blog.title}}</h5>
+                        <p>{{ blog.description|truncatewords:35}} <a href="{% url "blog_details" blog.id %}">[Read More]</a></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}
